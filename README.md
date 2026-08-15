@@ -69,7 +69,7 @@
 
     /* ========== ফুটার টেক্সট দৃশ্যমান করা ========== */
     footer p, footer li, footer a, footer span, footer h4 {
-      color: #d1d5db !important;  /* হালকা ধূসর - দৃশ্যমান */
+      color: #d1d5db !important;
     }
     footer a:hover {
       color: #ffffff !important;
@@ -78,9 +78,6 @@
       color: #ffffff !important;
     }
     footer .text-red-primary {
-      color: #E31E24 !important;
-    }
-    footer .fa-map-marker-alt {
       color: #E31E24 !important;
     }
 
@@ -370,13 +367,31 @@
 
     /* হেডারের পর স্লাইডারের জন্য মার্জিন */
     .slider-section {
-      padding-top: 80px; /* হেডারের উচ্চতা অনুযায়ী */
+      padding-top: 80px;
     }
 
     @media (min-width: 768px) {
       .slider-section {
         padding-top: 80px;
       }
+    }
+
+    /* ওয়েবসাইট পুরো স্ক্রিনে দেখানোর জন্য */
+    .container-full {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    @media (max-width: 640px) {
+      .container-full {
+        padding: 0 12px;
+      }
+    }
+
+    /* লোকেশন আইকন ঠিক করা */
+    .fa-location-dot {
+      color: #E31E24 !important;
     }
   </style>
 </head>
@@ -387,7 +402,6 @@
     <div class="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-20">
       <div class="flex items-center gap-2.5">
         <div class="flex items-center gap-2">
-          <!-- লোগো ইমেজ - logo.png ফাইলটি GitHub এ আপলোড করতে হবে -->
           <img src="logo.png" alt="SS Network Logo" class="w-11 h-11 object-contain rounded-full shadow-sm" onerror="this.onerror=null; this.src='https://via.placeholder.com/44?text=SS';" />
           <div class="leading-tight">
             <span class="font-poppins font-bold text-xl tracking-wide text-dark">SS NETWORK</span>
@@ -429,8 +443,8 @@
   </header>
 
   <!-- ========== স্লাইডার সেকশন (হেডারের নিচে) ========== -->
-  <section id="home" class="slider-section bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
-    <div class="max-w-6xl mx-auto px-4 md:px-8 py-4 md:py-6">
+  <section class="slider-section bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
+    <div class="container-full py-4 md:py-6">
       <div class="slider-container">
         <div class="slider-wrapper" id="sliderWrapper">
           <!-- স্লাইড ১ -->
@@ -475,9 +489,38 @@
     </div>
   </section>
 
+  <!-- ========== HERO SECTION (পুরনো হাই-স্পিড ইন্টারনেট সেকশন) ========== -->
+  <section id="home" class="py-8 pb-12 bg-gradient-to-br from-red-50 via-blue-50/20 to-white border-t border-gray-100/50">
+    <div class="container-full flex flex-col md:flex-row items-center gap-10">
+      <div class="flex-1 text-center md:text-left">
+        <h1 class="font-poppins font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-5xl leading-tight text-dark max-w-fit mx-auto md:mx-0">
+          <span class="block whitespace-nowrap">হাই-স্পিড ইন্টারনেট</span>
+          <span class="block whitespace-nowrap text-red-primary mt-1">এখন আপনার শহরে</span>
+        </h1>
+        
+        <div class="mt-4 text-lg md:text-xl font-semibold text-gray-700">
+          <span class="gradient-accent text-transparent bg-clip-text">WE ALWAYS PROVIDE BEST SERVICE</span>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+          <a href="#packages" class="bg-red-primary hover:bg-red-700 text-white font-semibold px-8 py-3.5 rounded-full shadow-lg transition flex items-center gap-2">
+            <i class="fas fa-wifi"></i> প্যাকেজ দেখুন
+          </a>
+          <a href="https://wa.me/8801716729140" target="_blank" class="bg-green-primary hover:bg-green-700 text-white font-semibold px-8 py-3.5 rounded-full shadow-lg transition flex items-center gap-2">
+            <i class="fab fa-whatsapp"></i> যোগাযোগ করুন
+          </a>
+        </div>
+      </div>
+
+      <div class="flex-1 flex justify-center mt-2 md:mt-0">
+        <div class="w-56 h-56 md:w-72 md:h-72 rounded-full gradient-accent opacity-20 blur-3xl"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== WHY SS NETWORK SECTION ========== -->
   <section id="why" class="py-14 bg-white border-t border-gray-100">
-    <div class="max-w-6xl mx-auto px-4">
+    <div class="container-full">
       <h2 class="font-poppins font-bold text-3xl md:text-4xl text-center text-dark mb-3">
         কেন <span class="ss-network-blue">SS NETWORK</span> ব্যবহার করবেন?
       </h2>
@@ -529,7 +572,7 @@
 
   <!-- ========== PACKAGES SECTION ========== -->
   <section id="packages" class="py-16 bg-soft-gray border-t border-gray-200/60">
-    <div class="max-w-6xl mx-auto px-4">
+    <div class="container-full">
       <h2 class="font-poppins font-bold text-4xl text-center text-dark mb-2">আমাদের <span class="text-red-primary">প্যাকেজ</span></h2>
       <p class="text-center text-gray-600 text-base md:text-lg mb-12">আপনার পছন্দ অনুযায়ী যেকোনো প্যাকেজ বেছে নিন</p>
       
@@ -630,7 +673,7 @@
 
   <!-- ========== CONTACT FORM SECTION ========== -->
   <section id="contact" class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-4">
+    <div class="container-full max-w-3xl mx-auto">
       <h2 class="font-poppins font-bold text-3xl md:text-4xl text-center text-dark mb-2">নতুন কানেকশনের জন্য <span class="text-red-primary">যোগাযোগ করুন</span></h2>
       <p class="text-center text-gray-600 text-base md:text-lg mb-10">নিচের ফর্মটি পূরণ করুন, আমরা আপনার সাথে দ্রুত যোগাযোগ করবো</p>
 
@@ -693,17 +736,17 @@
 
   <!-- ========== FOOTER ========== -->
   <footer class="bg-[#1a1a1a] pt-16 pb-6">
-    <div class="max-w-6xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="container-full grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <div>
         <div class="flex items-center gap-2">
-          <!-- ফুটার লোগো - logo.png ফাইল ব্যবহার করা হয়েছে -->
           <img src="logo.png" alt="SS Network Logo" class="w-10 h-10 object-contain rounded-full shadow-sm" onerror="this.onerror=null; this.src='https://via.placeholder.com/40?text=SS';" />
           <span class="font-poppins font-bold text-xl text-white">SS NETWORK</span>
         </div>
         <p class="mt-3 text-sm font-semibold text-gray-300">WE ALWAYS PROVIDE BEST SERVICE</p>
         
+        <!-- লোকেশন আইকন ঠিক করা হয়েছে -->
         <p class="mt-4 text-sm leading-relaxed text-gray-300 flex items-start gap-2">
-          <i class="fas fa-map-marker-alt text-red-primary text-base mt-1"></i>
+          <i class="fas fa-location-dot text-red-primary text-base mt-1"></i>
           <span class="text-gray-300">Alom House, 2nd floor, Islamia Road, Sonapur, Sadar, Noakhali.</span>
         </p>
       </div>
@@ -735,15 +778,12 @@
 
         <!-- সোশ্যাল মিডিয়া আইকন -->
         <div class="flex gap-4 text-xl">
-          <!-- ফেসবুক -->
           <a href="https://www.facebook.com/share/14psW5MGT5i/" target="_blank" class="text-gray-300 hover:text-blue-500 transition" aria-label="Facebook">
             <i class="fab fa-facebook"></i>
           </a>
-          <!-- ওয়াটসঅ্যাপ -->
           <a href="https://wa.me/8801716729140" target="_blank" class="text-gray-300 hover:text-green-400 transition" aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
           </a>
-          <!-- ইউটিউব - নতুন যোগ করা হয়েছে -->
           <a href="https://www.youtube.com/@ssnetwork41" target="_blank" class="text-gray-300 hover:text-red-500 transition" aria-label="YouTube">
             <i class="fab fa-youtube"></i>
           </a>
@@ -800,10 +840,8 @@
     let currentIndex = 0;
     let autoSlideInterval;
 
-    // ডটস
     const dots = document.querySelectorAll('.dot');
 
-    // আপডেট স্লাইড
     function updateSlider(index) {
       if (index < 0) index = totalSlides - 1;
       if (index >= totalSlides) index = 0;
@@ -811,29 +849,24 @@
       const offset = -currentIndex * 100;
       sliderWrapper.style.transform = `translateX(${offset}%)`;
 
-      // ডট আপডেট
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === currentIndex);
       });
     }
 
-    // পরবর্তী স্লাইড
     function nextSlide() {
       updateSlider(currentIndex + 1);
     }
 
-    // আগের স্লাইড
     function prevSlide() {
       updateSlider(currentIndex - 1);
     }
 
-    // অটো প্লে শুরু
     function startAutoSlide() {
       stopAutoSlide();
       autoSlideInterval = setInterval(nextSlide, 4000);
     }
 
-    // অটো প্লে থামা
     function stopAutoSlide() {
       if (autoSlideInterval) {
         clearInterval(autoSlideInterval);
@@ -841,16 +874,14 @@
       }
     }
 
-    // ডট ক্লিক
     dots.forEach((dot) => {
       dot.addEventListener('click', function() {
         const index = parseInt(this.getAttribute('data-index'));
         updateSlider(index);
-        startAutoSlide(); // রিসেট টাইমার
+        startAutoSlide();
       });
     });
 
-    // বাটন ইভেন্ট
     document.getElementById('nextBtn').addEventListener('click', () => {
       nextSlide();
       startAutoSlide();
@@ -861,7 +892,6 @@
       startAutoSlide();
     });
 
-    // টাচ/সোয়াইপ সাপোর্ট
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -884,11 +914,9 @@
       }
     }, { passive: true });
 
-    // মাউসের উপর হোভার করলে অটো প্লে থামবে
     sliderContainer.addEventListener('mouseenter', stopAutoSlide);
     sliderContainer.addEventListener('mouseleave', startAutoSlide);
 
-    // শুরু করুন
     updateSlider(0);
     startAutoSlide();
 
