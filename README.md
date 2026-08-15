@@ -18,6 +18,10 @@
   
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Swiper CSS (Slider Integration) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <style>
     * {
       margin: 0;
@@ -69,7 +73,7 @@
 
     /* ========== ফুটার টেক্সট দৃশ্যমান করা ========== */
     footer p, footer li, footer a, footer span, footer h4 {
-      color: #d1d5db !important;
+      color: #d1d5db !important;  /* হালকা ধূসর - দৃশ্যমান */
     }
     footer a:hover {
       color: #ffffff !important;
@@ -78,6 +82,9 @@
       color: #ffffff !important;
     }
     footer .text-red-primary {
+      color: #E31E24 !important;
+    }
+    footer .fa-map-marker-alt {
       color: #E31E24 !important;
     }
 
@@ -247,151 +254,50 @@
     }
     .thankyou-card i { font-size: 60px; color: #4CAF50; margin-bottom: 16px; }
 
-    /* ========== স্লাইডার স্টাইল ========== */
-    .slider-container {
-      position: relative;
+    /* ========== SWIPER SLIDER CUSTOM STYLING ========== */
+    .hero-slider {
       width: 100%;
-      max-width: 1200px;
+      max-width: 550px; /* ১২৫৪x১২৫৪ স্লাইডারের জন্য একদম নিখুঁত সাইজ */
       margin: 0 auto;
+      border-radius: 20px;
       overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     }
-
-    .slider-wrapper {
-      display: flex;
-      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      will-change: transform;
-    }
-
-    .slide-item {
-      min-width: 100%;
-      flex-shrink: 0;
-      position: relative;
-    }
-
-    .slide-item img {
+    .swiper-slide {
+      aspect-ratio: 1 / 1;
       width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 7;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* স্লাইডার বাটন */
-    .slider-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      border: none;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.3s ease, transform 0.2s ease;
-      z-index: 10;
-      backdrop-filter: blur(4px);
+      background-color: #f3f4f6;
     }
-
-    .slider-btn:hover {
-      background: rgba(227, 30, 36, 0.8);
-      transform: translateY(-50%) scale(1.05);
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
     }
-
-    .slider-btn.prev { left: 16px; }
-    .slider-btn.next { right: 16px; }
-
-    /* ডট ইন্ডিকেটর */
-    .dots-container {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 0 8px 0;
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #ccc;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-      border: none;
-    }
-
-    .dot.active {
-      background: #E31E24;
-      transform: scale(1.2);
-    }
-
-    .dot:hover {
-      background: #E31E24;
-    }
-
-    /* রেস্পন্সিভ */
-    @media (max-width: 768px) {
-      .slide-item img {
-        aspect-ratio: 16 / 9;
-      }
-      .slider-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 16px;
-      }
-      .slider-btn.prev { left: 8px; }
-      .slider-btn.next { right: 8px; }
-      .dot {
-        width: 10px;
-        height: 10px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .slide-item img {
-        aspect-ratio: 4 / 3;
-      }
-      .slider-btn {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
-      }
-      .slider-btn.prev { left: 4px; }
-      .slider-btn.next { right: 4px; }
-    }
-
-    /* হেডারের পর স্লাইডারের জন্য মার্জিন */
-    .slider-section {
-      padding-top: 80px;
-    }
-
-    @media (min-width: 768px) {
-      .slider-section {
-        padding-top: 80px;
-      }
-    }
-
-    /* ওয়েবসাইট পুরো স্ক্রিনে দেখানোর জন্য */
-    .container-full {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    @media (max-width: 640px) {
-      .container-full {
-        padding: 0 12px;
-      }
-    }
-
-    /* লোকেশন আইকন ঠিক করা */
-    .fa-location-dot {
+    .swiper-button-next, .swiper-button-prev {
       color: #E31E24 !important;
+      background: rgba(255, 255, 255, 0.85);
+      width: 42px !important;
+      height: 42px !important;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: all 0.2s ease;
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+      font-size: 18px !important;
+      font-weight: bold;
+    }
+    .swiper-button-next:hover, .swiper-button-prev:hover {
+      background: #E31E24;
+      color: #ffffff !important;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: #E31E24 !important;
+      width: 22px !important;
+      border-radius: 10px !important;
     }
   </style>
 </head>
@@ -442,56 +348,9 @@
     </div>
   </header>
 
-  <!-- ========== স্লাইডার সেকশন (হেডারের নিচে) ========== -->
-  <section class="slider-section bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
-    <div class="container-full py-4 md:py-6">
-      <div class="slider-container">
-        <div class="slider-wrapper" id="sliderWrapper">
-          <!-- স্লাইড ১ -->
-          <div class="slide-item">
-            <img src="slide1.jpg" alt="SS Network - হাই স্পিড ইন্টারনেট" loading="lazy" />
-          </div>
-          <!-- স্লাইড ২ -->
-          <div class="slide-item">
-            <img src="slide2.jpg" alt="SS Network - স্মুথ গেমিং" loading="lazy" />
-          </div>
-          <!-- স্লাইড ৩ -->
-          <div class="slide-item">
-            <img src="slide3.jpg" alt="SS Network - 4K স্ট্রিমিং" loading="lazy" />
-          </div>
-          <!-- স্লাইড ৪ -->
-          <div class="slide-item">
-            <img src="slide4.jpg" alt="SS Network - স্টেবল কানেকশন" loading="lazy" />
-          </div>
-          <!-- স্লাইড ৫ -->
-          <div class="slide-item">
-            <img src="slide5.jpg" alt="SS Network - ২৪/৭ সাপোর্ট" loading="lazy" />
-          </div>
-        </div>
-
-        <!-- প্রিভ/নেক্সট বাটন -->
-        <button class="slider-btn prev" id="prevBtn" aria-label="Previous slide">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="slider-btn next" id="nextBtn" aria-label="Next slide">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
-
-      <!-- ডট ইন্ডিকেটর -->
-      <div class="dots-container" id="dotsContainer">
-        <button class="dot active" data-index="0" aria-label="Slide 1"></button>
-        <button class="dot" data-index="1" aria-label="Slide 2"></button>
-        <button class="dot" data-index="2" aria-label="Slide 3"></button>
-        <button class="dot" data-index="3" aria-label="Slide 4"></button>
-        <button class="dot" data-index="4" aria-label="Slide 5"></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== HERO SECTION (পুরনো হাই-স্পিড ইন্টারনেট সেকশন) ========== -->
-  <section id="home" class="py-8 pb-12 bg-gradient-to-br from-red-50 via-blue-50/20 to-white border-t border-gray-100/50">
-    <div class="container-full flex flex-col md:flex-row items-center gap-10">
+  <!-- ========== HERO SECTION WITH SLIDER ========== -->
+  <section id="home" class="pt-28 md:pt-36 pb-8 bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center gap-10">
       <div class="flex-1 text-center md:text-left">
         <h1 class="font-poppins font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-5xl leading-tight text-dark max-w-fit mx-auto md:mx-0">
           <span class="block whitespace-nowrap">হাই-স্পিড ইন্টারনেট</span>
@@ -512,15 +371,43 @@
         </div>
       </div>
 
-      <div class="flex-1 flex justify-center mt-2 md:mt-0">
-        <div class="w-56 h-56 md:w-72 md:h-72 rounded-full gradient-accent opacity-20 blur-3xl"></div>
+      <!-- স্লাইডার কন্টেইনার (৫টি ১২৫৪x১২৫৪ স্লাইড সহ) -->
+      <div class="flex-1 w-full flex justify-center mt-2 md:mt-0">
+        <div class="swiper hero-slider">
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <img src="slide1.jpg" alt="SS Network Banner 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/E31E24/FFFFFF?text=Slide+1';" />
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+              <img src="slide2.jpg" alt="SS Network Banner 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/2196F3/FFFFFF?text=Slide+2';" />
+            </div>
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+              <img src="slide3.jpg" alt="SS Network Banner 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/4CAF50/FFFFFF?text=Slide+3';" />
+            </div>
+            <!-- Slide 4 -->
+            <div class="swiper-slide">
+              <img src="slide4.jpg" alt="SS Network Banner 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/FF6600/FFFFFF?text=Slide+4';" />
+            </div>
+            <!-- Slide 5 -->
+            <div class="swiper-slide">
+              <img src="slide5.jpg" alt="SS Network Banner 5" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/8E24AA/FFFFFF?text=Slide+5';" />
+            </div>
+          </div>
+          <!-- Pagination & Arrows -->
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ========== WHY SS NETWORK SECTION ========== -->
   <section id="why" class="py-14 bg-white border-t border-gray-100">
-    <div class="container-full">
+    <div class="max-w-6xl mx-auto px-4">
       <h2 class="font-poppins font-bold text-3xl md:text-4xl text-center text-dark mb-3">
         কেন <span class="ss-network-blue">SS NETWORK</span> ব্যবহার করবেন?
       </h2>
@@ -572,7 +459,7 @@
 
   <!-- ========== PACKAGES SECTION ========== -->
   <section id="packages" class="py-16 bg-soft-gray border-t border-gray-200/60">
-    <div class="container-full">
+    <div class="max-w-6xl mx-auto px-4">
       <h2 class="font-poppins font-bold text-4xl text-center text-dark mb-2">আমাদের <span class="text-red-primary">প্যাকেজ</span></h2>
       <p class="text-center text-gray-600 text-base md:text-lg mb-12">আপনার পছন্দ অনুযায়ী যেকোনো প্যাকেজ বেছে নিন</p>
       
@@ -673,7 +560,7 @@
 
   <!-- ========== CONTACT FORM SECTION ========== -->
   <section id="contact" class="py-16 bg-white">
-    <div class="container-full max-w-3xl mx-auto">
+    <div class="max-w-3xl mx-auto px-4">
       <h2 class="font-poppins font-bold text-3xl md:text-4xl text-center text-dark mb-2">নতুন কানেকশনের জন্য <span class="text-red-primary">যোগাযোগ করুন</span></h2>
       <p class="text-center text-gray-600 text-base md:text-lg mb-10">নিচের ফর্মটি পূরণ করুন, আমরা আপনার সাথে দ্রুত যোগাযোগ করবো</p>
 
@@ -736,7 +623,7 @@
 
   <!-- ========== FOOTER ========== -->
   <footer class="bg-[#1a1a1a] pt-16 pb-6">
-    <div class="container-full grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="max-w-6xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <div>
         <div class="flex items-center gap-2">
           <img src="logo.png" alt="SS Network Logo" class="w-10 h-10 object-contain rounded-full shadow-sm" onerror="this.onerror=null; this.src='https://via.placeholder.com/40?text=SS';" />
@@ -744,9 +631,8 @@
         </div>
         <p class="mt-3 text-sm font-semibold text-gray-300">WE ALWAYS PROVIDE BEST SERVICE</p>
         
-        <!-- লোকেশন আইকন ঠিক করা হয়েছে -->
         <p class="mt-4 text-sm leading-relaxed text-gray-300 flex items-start gap-2">
-          <i class="fas fa-location-dot text-red-primary text-base mt-1"></i>
+          <i class="fas fa-map-marker-alt text-red-primary text-base mt-1"></i>
           <span class="text-gray-300">Alom House, 2nd floor, Islamia Road, Sonapur, Sadar, Noakhali.</span>
         </p>
       </div>
@@ -776,7 +662,7 @@
           </a>
         </p>
 
-        <!-- সোশ্যাল মিডিয়া আইকন -->
+        <!-- সোশ্যাল মিডিয়া আইকনসমূহ (ইউটিউব যুক্ত করা হয়েছে) -->
         <div class="flex gap-4 text-xl">
           <a href="https://www.facebook.com/share/14psW5MGT5i/" target="_blank" class="text-gray-300 hover:text-blue-500 transition" aria-label="Facebook">
             <i class="fab fa-facebook"></i>
@@ -814,9 +700,12 @@
     </div>
   </div>
 
-  <!-- ========== JavaScript লজিক ========== -->
+  <!-- Swiper JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- JavaScript Logics -->
   <script>
-    // ===== Header Scroll Shadow =====
+    // Header Scroll Shadow
     const header = document.getElementById('mainHeader');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 20) {
@@ -826,101 +715,32 @@
       }
     });
 
-    // ===== Mobile Menu Toggle =====
+    // Mobile Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('open');
     });
 
-    // ===== স্লাইডার লজিক =====
-    const sliderWrapper = document.getElementById('sliderWrapper');
-    const slides = document.querySelectorAll('.slide-item');
-    const totalSlides = slides.length;
-    let currentIndex = 0;
-    let autoSlideInterval;
-
-    const dots = document.querySelectorAll('.dot');
-
-    function updateSlider(index) {
-      if (index < 0) index = totalSlides - 1;
-      if (index >= totalSlides) index = 0;
-      currentIndex = index;
-      const offset = -currentIndex * 100;
-      sliderWrapper.style.transform = `translateX(${offset}%)`;
-
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentIndex);
-      });
-    }
-
-    function nextSlide() {
-      updateSlider(currentIndex + 1);
-    }
-
-    function prevSlide() {
-      updateSlider(currentIndex - 1);
-    }
-
-    function startAutoSlide() {
-      stopAutoSlide();
-      autoSlideInterval = setInterval(nextSlide, 4000);
-    }
-
-    function stopAutoSlide() {
-      if (autoSlideInterval) {
-        clearInterval(autoSlideInterval);
-        autoSlideInterval = null;
-      }
-    }
-
-    dots.forEach((dot) => {
-      dot.addEventListener('click', function() {
-        const index = parseInt(this.getAttribute('data-index'));
-        updateSlider(index);
-        startAutoSlide();
-      });
+    // Swiper Slider Initialization
+    const swiper = new Swiper('.hero-slider', {
+      loop: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      grabCursor: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
     });
 
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      nextSlide();
-      startAutoSlide();
-    });
-
-    document.getElementById('prevBtn').addEventListener('click', () => {
-      prevSlide();
-      startAutoSlide();
-    });
-
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    const sliderContainer = document.querySelector('.slider-container');
-
-    sliderContainer.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    sliderContainer.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) {
-          nextSlide();
-        } else {
-          prevSlide();
-        }
-        startAutoSlide();
-      }
-    }, { passive: true });
-
-    sliderContainer.addEventListener('mouseenter', stopAutoSlide);
-    sliderContainer.addEventListener('mouseleave', startAutoSlide);
-
-    updateSlider(0);
-    startAutoSlide();
-
-    // ===== Form Submission Logic to WhatsApp =====
+    // Form Submission Logic to WhatsApp
     const connectionForm = document.getElementById('connectionForm');
     const thankYouModal = document.getElementById('thankYouModal');
     const closeModalBtn = document.getElementById('closeModalBtn');
