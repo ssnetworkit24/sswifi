@@ -1,1 +1,931 @@
-# sswifi
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SS Network · ISP</title>
+  
+  <!-- Favicon Link -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Poppins + Kalpurush -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Kalpurush:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Kalpurush', 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3, h4, .font-poppins {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    /* ========== Kalpurush ফন্ট ========== */
+    p, li, label, select, input, textarea, .description, .service-text, 
+    .form-label, .btn-submit, .text-base, .text-sm, .text-xs,
+    .font-medium, .font-semibold, .font-bold {
+      font-family: 'Kalpurush', sans-serif !important;
+    }
+    
+    /* প্যারাগ্রাফ টেক্সট বড়, গাঢ় ও স্পষ্ট */
+    p, li, label, select, input, textarea, .description, .service-text {
+      font-size: 18px !important;
+      font-weight: 500 !important;
+      line-height: 1.9 !important;
+      color: #1a1a1a !important;
+    }
+    
+    /* ছোট টেক্সটের জন্য */
+    .text-xs, .text-sm {
+      font-size: 15px !important;
+      font-weight: 400 !important;
+      line-height: 1.6 !important;
+    }
+    
+    /* প্যাকেজের লিস্ট আইটেমগুলো */
+    .space-y-2 li, .space-y-2\.5 li {
+      font-size: 17px !important;
+      font-weight: 500 !important;
+    }
+
+    /* ========== SS NETWORK নীল করা ========== */
+    .ss-network-blue {
+      color: #2196F3 !important;
+    }
+
+    /* ========== ফুটার টেক্সট দৃশ্যমান করা ========== */
+    footer p, footer li, footer a, footer span, footer h4 {
+      color: #d1d5db !important;  /* হালকা ধূসর - দৃশ্যমান */
+    }
+    footer a:hover {
+      color: #ffffff !important;
+    }
+    footer .text-white {
+      color: #ffffff !important;
+    }
+    footer .text-red-primary {
+      color: #E31E24 !important;
+    }
+    footer .fa-map-marker-alt {
+      color: #E31E24 !important;
+    }
+
+    .bg-red-primary { background-color: #E31E24; }
+    .text-red-primary { color: #E31E24; }
+    .border-red-primary { border-color: #E31E24; }
+    .bg-blue-primary { background-color: #2196F3; }
+    .text-blue-primary { color: #2196F3; }
+    .bg-green-primary { background-color: #4CAF50; }
+    .text-green-primary { color: #4CAF50; }
+    .bg-orange-primary { background-color: #FF6600; }
+    .text-orange-primary { color: #FF6600; }
+    .bg-purple-primary { background-color: #8E24AA; }
+    .text-purple-primary { color: #8E24AA; }
+    .bg-yellow-primary { background-color: #D81B60; }
+    .text-yellow-primary { color: #D81B60; }
+
+    .gradient-accent {
+      background: linear-gradient(135deg, #E31E24, #FF6600, #2196F3, #4CAF50);
+      background-size: 300% 300%;
+      animation: gradientMove 6s ease infinite;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    .header-scrolled {
+      background: rgba(255, 255, 255, 0.95) !important;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+      backdrop-filter: blur(4px);
+    }
+
+    /* FLOATING WHATSAPP - RIGHT SIDE */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      background: #25D366;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 36px;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      transition: 0.25s ease;
+      text-decoration: none;
+      animation: pulse-bounce 2.2s infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      background: #20b85f;
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.5);
+    }
+    .whatsapp-float .tooltip {
+      position: absolute;
+      right: 72px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 14px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.2s;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+    }
+    .whatsapp-float:hover .tooltip { opacity: 1; }
+    @keyframes pulse-bounce {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    .card-hover {
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.12);
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .mobile-menu.open { max-height: 380px; }
+
+    .bg-soft-gray { background-color: #F8F9FA; }
+    .text-dark { color: #1a1a1a; }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      transition: 0.2s;
+      background: white;
+      font-family: 'Kalpurush', sans-serif !important;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #E31E24;
+      box-shadow: 0 0 0 3px rgba(227, 30, 36, 0.1);
+    }
+    .form-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #1a1a1a;
+      font-size: 1.05rem;
+    }
+    .btn-submit {
+      background: #E31E24;
+      color: white;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 50px;
+      border: none;
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: 0.2s;
+      width: 100%;
+      font-family: 'Kalpurush', sans-serif !important;
+    }
+    .btn-submit:hover {
+      background: #b8151a;
+      transform: scale(1.01);
+      box-shadow: 0 8px 20px rgba(227, 30, 36, 0.3);
+    }
+
+    /* THANK YOU MODAL OVERLAY */
+    .thankyou-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .thankyou-overlay.active { display: flex; }
+    .thankyou-card {
+      background: white;
+      max-width: 440px;
+      width: 100%;
+      padding: 40px 28px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+      animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .thankyou-card i { font-size: 60px; color: #4CAF50; margin-bottom: 16px; }
+
+    /* ========== স্লাইডার স্টাইল ========== */
+    .slider-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .slider-wrapper {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+
+    .slide-item {
+      min-width: 100%;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .slide-item img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 7;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* স্লাইডার বাটন */
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease, transform 0.2s ease;
+      z-index: 10;
+      backdrop-filter: blur(4px);
+    }
+
+    .slider-btn:hover {
+      background: rgba(227, 30, 36, 0.8);
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .slider-btn.prev { left: 16px; }
+    .slider-btn.next { right: 16px; }
+
+    /* ডট ইন্ডিকেটর */
+    .dots-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 0 8px 0;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ccc;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      border: none;
+    }
+
+    .dot.active {
+      background: #E31E24;
+      transform: scale(1.2);
+    }
+
+    .dot:hover {
+      background: #E31E24;
+    }
+
+    /* রেস্পন্সিভ */
+    @media (max-width: 768px) {
+      .slide-item img {
+        aspect-ratio: 16 / 9;
+      }
+      .slider-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+      .slider-btn.prev { left: 8px; }
+      .slider-btn.next { right: 8px; }
+      .dot {
+        width: 10px;
+        height: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .slide-item img {
+        aspect-ratio: 4 / 3;
+      }
+      .slider-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+      }
+      .slider-btn.prev { left: 4px; }
+      .slider-btn.next { right: 4px; }
+    }
+
+    /* হেডারের পর স্লাইডারের জন্য মার্জিন */
+    .slider-section {
+      padding-top: 80px; /* হেডারের উচ্চতা অনুযায়ী */
+    }
+
+    @media (min-width: 768px) {
+      .slider-section {
+        padding-top: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 bg-white/90 transition-all duration-300 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-20">
+      <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-2">
+          <!-- লোগো ইমেজ - logo.png ফাইলটি GitHub এ আপলোড করতে হবে -->
+          <img src="logo.png" alt="SS Network Logo" class="w-11 h-11 object-contain rounded-full shadow-sm" onerror="this.onerror=null; this.src='https://via.placeholder.com/44?text=SS';" />
+          <div class="leading-tight">
+            <span class="font-poppins font-bold text-xl tracking-wide text-dark">SS NETWORK</span>
+            <span class="block text-[10px] font-medium text-gray-500 tracking-widest">WE ALWAYS PROVIDE BEST SERVICE</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 font-poppins font-medium text-sm text-gray-700">
+        <a href="#home" class="hover:text-red-primary transition">Home</a>
+        <a href="#why" class="hover:text-red-primary transition">Why SS</a>
+        <a href="#packages" class="hover:text-red-primary transition">Packages</a>
+        <a href="#contact" class="hover:text-red-primary transition">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="tel:01716729140" class="hidden md:flex items-center gap-1.5 bg-red-primary/10 text-red-primary font-semibold px-4 py-2 rounded-full text-sm hover:bg-red-primary hover:text-white transition">
+          <i class="fas fa-phone"></i> <span>01716729140</span>
+        </a>
+        <button id="menuToggle" class="md:hidden text-2xl text-gray-700 focus:outline-none" aria-label="menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- মোবাইল মেনু -->
+    <div id="mobileMenu" class="mobile-menu md:hidden bg-white px-4 pb-4 border-t border-gray-100">
+      <div class="flex flex-col gap-3 font-poppins font-medium text-gray-700 text-base pt-3">
+        <a href="#home" class="hover:text-red-primary py-1 border-b border-gray-50">Home</a>
+        <a href="#why" class="hover:text-red-primary py-1 border-b border-gray-50">Why SS</a>
+        <a href="#packages" class="hover:text-red-primary py-1 border-b border-gray-50">Packages</a>
+        <a href="#contact" class="hover:text-red-primary py-1 border-b border-gray-50">Contact</a>
+        
+        <a href="tel:01716729140" class="mt-2 bg-red-primary/10 text-red-primary font-semibold px-4 py-2 rounded-full text-center flex items-center justify-center gap-2">
+          <i class="fas fa-phone"></i> <span>01716729140</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== স্লাইডার সেকশন (হেডারের নিচে) ========== -->
+  <section id="home" class="slider-section bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 py-4 md:py-6">
+      <div class="slider-container">
+        <div class="slider-wrapper" id="sliderWrapper">
+          <!-- স্লাইড ১ -->
+          <div class="slide-item">
+            <img src="slide1.jpg" alt="SS Network - হাই স্পিড ইন্টারনেট" loading="lazy" />
+          </div>
+          <!-- স্লাইড ২ -->
+          <div class="slide-item">
+            <img src="slide2.jpg" alt="SS Network - স্মুথ গেমিং" loading="lazy" />
+          </div>
+          <!-- স্লাইড ৩ -->
+          <div class="slide-item">
+            <img src="slide3.jpg" alt="SS Network - 4K স্ট্রিমিং" loading="lazy" />
+          </div>
+          <!-- স্লাইড ৪ -->
+          <div class="slide-item">
+            <img src="slide4.jpg" alt="SS Network - স্টেবল কানেকশন" loading="lazy" />
+          </div>
+          <!-- স্লাইড ৫ -->
+          <div class="slide-item">
+            <img src="slide5.jpg" alt="SS Network - ২৪/৭ সাপোর্ট" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- প্রিভ/নেক্সট বাটন -->
+        <button class="slider-btn prev" id="prevBtn" aria-label="Previous slide">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slider-btn next" id="nextBtn" aria-label="Next slide">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- ডট ইন্ডিকেটর -->
+      <div class="dots-container" id="dotsContainer">
+        <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+        <button class="dot" data-index="1" aria-label="Slide 2"></button>
+        <button class="dot" data-index="2" aria-label="Slide 3"></button>
+        <button class="dot" data-index="3" aria-label="Slide 4"></button>
+        <button class="dot" data-index="4" aria-label="Slide 5"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY SS NETWORK SECTION ========== -->
+  <section id="why" class="py-14 bg-white border-t border-gray-100">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="font-poppins font-bold text-3xl md:text-4xl text-center text-dark mb-3">
+        কেন <span class="ss-network-blue">SS NETWORK</span> ব্যবহার করবেন?
+      </h2>
+      <p class="text-center text-gray-600 text-base md:text-lg mb-12 max-w-2xl mx-auto">আমরা গ্রাহকদের সর্বোচ্চ মানের সেবা নিশ্চিত করতে সর্বদা প্রস্তুত। দেখে নিন কেন আমরা সেরা:</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-soft-gray p-6 rounded-2xl card-hover border-t-4 border-red-primary">
+          <div class="text-red-primary text-3xl mb-4"><i class="fas fa-tachometer-alt"></i></div>
+          <h3 class="font-bold text-lg mb-3 border-b pb-2">স্পিড ও কানেকশন</h3>
+          <ul class="space-y-2.5 text-gray-700">
+            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>হাই-স্পিড, স্টেবল কানেকশন — কোনো বাফারিং নেই</li>
+            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>লো ল্যাটেন্সি — গেমিং ও অনলাইন ক্লাসের জন্য পারফেক্ট</li>
+            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>২৪ ঘণ্টা আনলিমিটেড ডেটা, কোনো FUP লিমিট নেই</li>
+          </ul>
+        </div>
+
+        <div class="bg-soft-gray p-6 rounded-2xl card-hover border-t-4 border-blue-primary">
+          <div class="text-blue-primary text-3xl mb-4"><i class="fas fa-headset"></i></div>
+          <h3 class="font-bold text-lg mb-3 border-b pb-2">সার্ভিস ও সাপোর্ট</h3>
+          <ul class="space-y-2.5 text-gray-700">
+            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>২৪/৭ কাস্টমার সাপোর্ট — যেকোনো সমস্যায় সাথে সাথে সমাধান</li>
+            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>দ্রুত টেকনিক্যাল টিম রেসপন্স</li>
+            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>সহজ পেমেন্ট সিস্টেম (bKash/Nagad/ক্যাশ)</li>
+          </ul>
+        </div>
+
+        <div class="bg-soft-gray p-6 rounded-2xl card-hover border-t-4 border-orange-primary">
+          <div class="text-orange-primary text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
+          <h3 class="font-bold text-lg mb-3 border-b pb-2">মূল্য ও বিশ্বাসযোগ্যতা</h3>
+          <ul class="space-y-2.5 text-gray-700">
+            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>সাশ্রয়ী মূল্যে সেরা সার্ভিস — কোনো হিডেন চার্জ নেই</li>
+            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>লোকাল এরিয়ার মধ্যে বিশ্বস্ত ও পরিচিত প্রোভাইডার</li>
+            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>নমনীয় প্যাকেজ — প্রয়োজন অনুযায়ী প্যাকেজ পরিবর্তনের সুবিধা</li>
+          </ul>
+        </div>
+
+        <div class="bg-soft-gray p-6 rounded-2xl card-hover border-t-4 border-green-primary">
+          <div class="text-green-primary text-3xl mb-4"><i class="fas fa-network-wired"></i></div>
+          <h3 class="font-bold text-lg mb-3 border-b pb-2">ইনফ্রাস্ট্রাকচার</h3>
+          <ul class="space-y-2.5 text-gray-700">
+            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>আধুনিক ফাইবার অপটিক নেটওয়ার্ক</li>
+            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>৯৯.৯% আপটাইম গ্যারান্টি</li>
+            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>ওয়েদার-প্রুফ স্টেবল কানেকশন (বৃষ্টি/ঝড়েও নেট বন্ধ হয় না)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PACKAGES SECTION ========== -->
+  <section id="packages" class="py-16 bg-soft-gray border-t border-gray-200/60">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="font-poppins font-bold text-4xl text-center text-dark mb-2">আমাদের <span class="text-red-primary">প্যাকেজ</span></h2>
+      <p class="text-center text-gray-600 text-base md:text-lg mb-12">আপনার পছন্দ অনুযায়ী যেকোনো প্যাকেজ বেছে নিন</p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 20 Mbps -->
+        <div class="bg-white rounded-2xl p-6 shadow-md card-hover border-t-4 border-blue-primary flex flex-col justify-between">
+          <div>
+            <h3 class="font-poppins font-bold text-2xl">20 Mbps</h3>
+            <div class="text-3xl font-poppins font-bold text-red-primary mt-1">৳৫০০ <span class="text-sm font-normal text-gray-500">/মাস</span></div>
+            <ul class="mt-4 space-y-2 text-gray-700">
+              <li><i class="fas fa-check text-green-primary mr-2"></i>আনলিমিটেড ডেটা</li>
+              <li><i class="fas fa-check text-green-primary mr-2"></i>২৪/৭ সাপোর্ট</li>
+              <li><i class="fas fa-check text-green-primary mr-2"></i>ফাইবার অপটিক সংযোগ</li>
+            </ul>
+          </div>
+          <a href="#contact" class="mt-6 block text-center bg-blue-primary hover:bg-blue-600 text-white font-semibold py-2.5 rounded-full transition">সংযোগ নিন</a>
+        </div>
+
+        <!-- 30 Mbps -->
+        <div class="bg-white rounded-2xl p-6 shadow-xl card-hover border-t-4 border-orange-primary flex flex-col justify-between relative">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-primary text-white text-xs font-bold px-3 py-1 rounded-full">Most Popular</span>
+          <div>
+            <h3 class="font-poppins font-bold text-2xl">30 Mbps</h3>
+            <div class="text-3xl font-poppins font-bold text-red-primary mt-1">৳৬৫০ <span class="text-sm font-normal text-gray-500">/মাস</span></div>
+            <ul class="mt-4 space-y-2 text-gray-700">
+              <li><i class="fas fa-check text-green-primary mr-2"></i>আনলিমিটেড ডেটা</li>
+              <li><i class="fas fa-check text-green-primary mr-2"></i>২৪/৭ সাপোর্ট</li>
+              <li><i class="fas fa-check text-green-primary mr-2"></i>হাই-স্পিড ফাইবার</li>
+            </ul>
+          </div>
+          <a href="#contact" class="mt-6 block text-center bg-orange-primary hover:bg-orange-600 text-white font-semibold py-2.5 rounded-full transition">সংযোগ নিন</a>
+        </div>
+
+        <!-- 50 Mbps -->
+        <div class="bg-white rounded-2xl p-6 shadow-md card-hover border-t-4 border-green-primary flex flex-col justify-between">
+          <div>
+            <h3 class="font-poppins font-bold text-2xl">50 Mbps</h3>
+            <div class="text-3xl font-poppins font-bold text-red-primary mt-1">৳৮২০ <span class="text-sm font-normal text-gray-500">/মাস</span></div>
+            <ul class="mt-4 space-y-2 text-gray-700">
+              <li><i class="fas fa-check text-green-primary mr-2"></i>আনলিমিটেড ডেটা</li>
+              <li><i class="fas fa-check text-green-primary mr-2"></i>২৪/৭ সাপোর্ট</li>
+              <li><i class="fas fa-check text-green-primary mr-2"></i>গেমিং ও স্ট্রিমিং</li>
+            </ul>
+          </div>
+          <a href="#contact" class="mt-6 block text-center bg-green-primary hover:bg-green-600 text-white font-semibold py-2.5 rounded-full transition">সংযোগ নিন</a>
+        </div>
+
+        <!-- 70 Mbps -->
+        <div class="bg-white rounded-2xl p-6 shadow-md card-hover border-t-4 border-red-primary flex flex-col justify-between">
+          <div>
+            <h3 class="font-poppins font-bold text-2xl">70 Mbps</h3>
+            <div class="text-3xl font-poppins font-bold text-red-primary mt-1">৳৯৯৯ <span class="text-sm font-normal text-gray-500">/মাস</span></div>
+            <ul class="mt-4 space-y-2 text-gray-700">
+              <li><i class="fas fa-check text-green-primary mr-2"></i>আনলিমিটেড ডেটা</li>
+              <li><i class="fas fa-check text-green-primary mr-2"></i>২৪/৭ সাপোর্ট</li>
+              <li><i class="fas fa-check text-green-primary mr-2"></i>আল্ট্রা ফাস্ট ফাইবার</li>
+            </ul>
+          </div>
+          <a href="#contact" class="mt-6 block text-center bg-red-primary hover:bg-red-700 text-white font-semibold py-2.5 rounded-full transition">সংযোগ নিন</a>
+        </div>
+
+        <!-- সিলভার (Silver) - 85 Mbps -->
+        <div class="bg-white rounded-2xl p-6 shadow-md card-hover border-t-4 border-purple-primary flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center">
+              <h3 class="font-poppins font-bold text-2xl">85 Mbps</h3>
+              <span class="bg-purple-primary/10 text-purple-primary text-xs font-bold px-2.5 py-1 rounded-full">Silver</span>
+            </div>
+            <div class="text-3xl font-poppins font-bold text-red-primary mt-1">৳১০৯৯ <span class="text-sm font-normal text-gray-500">/মাস</span></div>
+            <ul class="mt-4 space-y-2 text-gray-700">
+              <li><i class="fas fa-check text-green-primary mr-2"></i>আনলিমিটেড ডেটা</li>
+              <li><i class="fas fa-check text-green-primary mr-2"></i>২৪/৭ প্রাইওরিটি সাপোর্ট</li>
+              <li><i class="fas fa-check text-green-primary mr-2"></i>হেভি ডাউনলোডিং ও 4K স্ট্রিমিং</li>
+            </ul>
+          </div>
+          <a href="#contact" class="mt-6 block text-center bg-purple-primary hover:bg-purple-700 text-white font-semibold py-2.5 rounded-full transition">সংযোগ নিন</a>
+        </div>
+
+        <!-- গোল্ড (Gold) - 100 Mbps -->
+        <div class="bg-white rounded-2xl p-6 shadow-md card-hover border-t-4 border-yellow-primary flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center">
+              <h3 class="font-poppins font-bold text-2xl">100 Mbps</h3>
+              <span class="bg-yellow-primary/10 text-yellow-primary text-xs font-bold px-2.5 py-1 rounded-full">Gold</span>
+            </div>
+            <div class="text-3xl font-poppins font-bold text-red-primary mt-1">৳১২০০ <span class="text-sm font-normal text-gray-500">/মাস</span></div>
+            <ul class="mt-4 space-y-2 text-gray-700">
+              <li><i class="fas fa-check text-green-primary mr-2"></i>আনলিমিটেড ডেটা</li>
+              <li><i class="fas fa-check text-green-primary mr-2"></i>ডেডিকেটেড VIP সাপোর্ট</li>
+              <li><i class="fas fa-check text-green-primary mr-2"></i>বাফারিং ছাড়া ৪K/৮K কন্টেন্ট</li>
+            </ul>
+          </div>
+          <a href="#contact" class="mt-6 block text-center bg-yellow-primary hover:bg-yellow-700 text-white font-semibold py-2.5 rounded-full transition">সংযোগ নিন</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT FORM SECTION ========== -->
+  <section id="contact" class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="font-poppins font-bold text-3xl md:text-4xl text-center text-dark mb-2">নতুন কানেকশনের জন্য <span class="text-red-primary">যোগাযোগ করুন</span></h2>
+      <p class="text-center text-gray-600 text-base md:text-lg mb-10">নিচের ফর্মটি পূরণ করুন, আমরা আপনার সাথে দ্রুত যোগাযোগ করবো</p>
+
+      <div class="bg-soft-gray p-6 sm:p-10 rounded-3xl shadow-sm border border-gray-100">
+        <form id="connectionForm">
+          <div class="space-y-4">
+            <div>
+              <label class="form-label" for="userName">নাম :</label>
+              <input type="text" id="userName" class="form-input" placeholder="আপনার পুরো নাম লিখুন" required />
+            </div>
+
+            <div>
+              <label class="form-label" for="userMobile">মোবাইল নাম্বার :</label>
+              <input type="tel" id="userMobile" class="form-input" placeholder="01XXXXXXXXX" required />
+            </div>
+
+            <div>
+              <label class="form-label" for="userEmail">ইমেইল :</label>
+              <input type="email" id="userEmail" class="form-input" placeholder="example@mail.com" />
+            </div>
+
+            <div>
+              <label class="form-label" for="userAddress">সম্পূর্ণ ঠিকানা :</label>
+              <textarea id="userAddress" class="form-input" rows="2" placeholder="আপনার বিস্তারিত ঠিকানা লিখুন" required></textarea>
+            </div>
+
+            <div>
+              <label class="form-label" for="connectionType">কানেকশন টাইপ :</label>
+              <select id="connectionType" class="form-input cursor-pointer">
+                <option value="হোম" selected>হোম</option>
+                <option value="অফিস">অফিস</option>
+                <option value="শপ">শপ</option>
+                <option value="কর্পোরেট">কর্পোরেট</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="form-label" for="packageSelect">প্যাকেজ সিলেক্ট :</label>
+              <select id="packageSelect" class="form-input cursor-pointer">
+                <option value="20 Mbps - ৳৫০০/মাস">20 Mbps (৳৫০০/মাস)</option>
+                <option value="30 Mbps - ৳৬৫০/মাস">30 Mbps (৳৬৫০/মাস)</option>
+                <option value="50 Mbps - ৳৮২০/মাস">50 Mbps (৳৮২০/মাস)</option>
+                <option value="70 Mbps - ৳৯৯৯/মাস">70 Mbps (৳৯৯৯/মাস)</option>
+                <option value="Silver (85 Mbps) - ৳১০৯৯/মাস">Silver - 85 Mbps (৳১০৯৯/মাস)</option>
+                <option value="Gold (100 Mbps) - ৳১২০০/মাস">Gold - 100 Mbps (৳১২০০/মাস)</option>
+              </select>
+            </div>
+
+            <div class="pt-4">
+              <button type="submit" class="btn-submit">
+                Submit
+              </button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-[#1a1a1a] pt-16 pb-6">
+    <div class="max-w-6xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div>
+        <div class="flex items-center gap-2">
+          <!-- ফুটার লোগো - logo.png ফাইল ব্যবহার করা হয়েছে -->
+          <img src="logo.png" alt="SS Network Logo" class="w-10 h-10 object-contain rounded-full shadow-sm" onerror="this.onerror=null; this.src='https://via.placeholder.com/40?text=SS';" />
+          <span class="font-poppins font-bold text-xl text-white">SS NETWORK</span>
+        </div>
+        <p class="mt-3 text-sm font-semibold text-gray-300">WE ALWAYS PROVIDE BEST SERVICE</p>
+        
+        <p class="mt-4 text-sm leading-relaxed text-gray-300 flex items-start gap-2">
+          <i class="fas fa-map-marker-alt text-red-primary text-base mt-1"></i>
+          <span class="text-gray-300">Alom House, 2nd floor, Islamia Road, Sonapur, Sadar, Noakhali.</span>
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-poppins font-semibold text-white mb-3">Quick Links</h4>
+        <ul class="space-y-2 text-base">
+          <li><a href="#home" class="text-gray-300 hover:text-white transition">Home</a></li>
+          <li><a href="#why" class="text-gray-300 hover:text-white transition">Why SS</a></li>
+          <li><a href="#packages" class="text-gray-300 hover:text-white transition">Packages</a></li>
+          <li><a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-poppins font-semibold text-white mb-3">যোগাযোগ</h4>
+        
+        <p class="text-base mb-2">
+          <a href="tel:01716729140" class="text-gray-300 hover:text-white transition flex items-center gap-2">
+            <i class="fas fa-phone text-red-primary"></i> 01716729140
+          </a>
+        </p>
+
+        <p class="text-base mb-4">
+          <a href="mailto:ssnetwork41@gmail.com" class="text-gray-300 hover:text-white transition flex items-center gap-2">
+            <i class="fas fa-envelope text-red-primary"></i> ssnetwork41@gmail.com
+          </a>
+        </p>
+
+        <!-- সোশ্যাল মিডিয়া আইকন -->
+        <div class="flex gap-4 text-xl">
+          <!-- ফেসবুক -->
+          <a href="https://www.facebook.com/share/14psW5MGT5i/" target="_blank" class="text-gray-300 hover:text-blue-500 transition" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <!-- ওয়াটসঅ্যাপ -->
+          <a href="https://wa.me/8801716729140" target="_blank" class="text-gray-300 hover:text-green-400 transition" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <!-- ইউটিউব - নতুন যোগ করা হয়েছে -->
+          <a href="https://www.youtube.com/@ssnetwork41" target="_blank" class="text-gray-300 hover:text-red-500 transition" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-10 pt-6 text-center text-xs text-white/40">
+      © 2026 SS Network. All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- ========== FLOATING WHATSAPP (RIGHT SIDE) ========== -->
+  <a href="https://wa.me/8801716729140" target="_blank" class="whatsapp-float" aria-label="WhatsApp chat">
+    <i class="fab fa-whatsapp"></i>
+    <span class="tooltip">WhatsApp-এ নক দিন</span>
+  </a>
+
+  <!-- ========== THANK YOU OVERLAY MODAL ========== -->
+  <div id="thankYouModal" class="thankyou-overlay">
+    <div class="thankyou-card">
+      <i class="fas fa-check-circle"></i>
+      <h3 class="font-poppins font-bold text-2xl text-dark mb-2">Thank You!</h3>
+      <p class="text-gray-600 text-base mb-6">আপনার তথ্যসমূহ সফলভাবে জমা নেওয়া হয়েছে। আমাদের প্রতিনিধি শীঘ্রই আপনার দেওয়া নাম্বারে যোগাযোগ করবে।</p>
+      <button id="closeModalBtn" class="bg-red-primary hover:bg-red-700 text-white font-semibold px-6 py-2.5 rounded-full transition w-full">
+        ঠিক আছে
+      </button>
+    </div>
+  </div>
+
+  <!-- ========== JavaScript লজিক ========== -->
+  <script>
+    // ===== Header Scroll Shadow =====
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    });
+
+    // ===== Mobile Menu Toggle =====
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    // ===== স্লাইডার লজিক =====
+    const sliderWrapper = document.getElementById('sliderWrapper');
+    const slides = document.querySelectorAll('.slide-item');
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+    let autoSlideInterval;
+
+    // ডটস
+    const dots = document.querySelectorAll('.dot');
+
+    // আপডেট স্লাইড
+    function updateSlider(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      currentIndex = index;
+      const offset = -currentIndex * 100;
+      sliderWrapper.style.transform = `translateX(${offset}%)`;
+
+      // ডট আপডেট
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    // পরবর্তী স্লাইড
+    function nextSlide() {
+      updateSlider(currentIndex + 1);
+    }
+
+    // আগের স্লাইড
+    function prevSlide() {
+      updateSlider(currentIndex - 1);
+    }
+
+    // অটো প্লে শুরু
+    function startAutoSlide() {
+      stopAutoSlide();
+      autoSlideInterval = setInterval(nextSlide, 4000);
+    }
+
+    // অটো প্লে থামা
+    function stopAutoSlide() {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+      }
+    }
+
+    // ডট ক্লিক
+    dots.forEach((dot) => {
+      dot.addEventListener('click', function() {
+        const index = parseInt(this.getAttribute('data-index'));
+        updateSlider(index);
+        startAutoSlide(); // রিসেট টাইমার
+      });
+    });
+
+    // বাটন ইভেন্ট
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      nextSlide();
+      startAutoSlide();
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      prevSlide();
+      startAutoSlide();
+    });
+
+    // টাচ/সোয়াইপ সাপোর্ট
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const sliderContainer = document.querySelector('.slider-container');
+
+    sliderContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    sliderContainer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+        startAutoSlide();
+      }
+    }, { passive: true });
+
+    // মাউসের উপর হোভার করলে অটো প্লে থামবে
+    sliderContainer.addEventListener('mouseenter', stopAutoSlide);
+    sliderContainer.addEventListener('mouseleave', startAutoSlide);
+
+    // শুরু করুন
+    updateSlider(0);
+    startAutoSlide();
+
+    // ===== Form Submission Logic to WhatsApp =====
+    const connectionForm = document.getElementById('connectionForm');
+    const thankYouModal = document.getElementById('thankYouModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    connectionForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('userName').value;
+      const mobile = document.getElementById('userMobile').value;
+      const email = document.getElementById('userEmail').value || 'দেওয়া হয়নি';
+      const address = document.getElementById('userAddress').value;
+      const connectionType = document.getElementById('connectionType').value;
+      const selectedPackage = document.getElementById('packageSelect').value;
+
+      const whatsappMessage = `*নতুন কানেকশন রিকোয়েস্ট*%0A%0A` +
+        `*নাম:* ${encodeURIComponent(name)}%0A` +
+        `*মোবাইল:* ${encodeURIComponent(mobile)}%0A` +
+        `*ইমেইল:* ${encodeURIComponent(email)}%0A` +
+        `*ঠিকানা:* ${encodeURIComponent(address)}%0A` +
+        `*কানেকশন টাইপ:* ${encodeURIComponent(connectionType)}%0A` +
+        `*প্যাকেজ:* ${encodeURIComponent(selectedPackage)}`;
+
+      const targetWhatsAppNumber = "8801716729140";
+      const whatsappApiUrl = `https://api.whatsapp.com/send?phone=${targetWhatsAppNumber}&text=${whatsappMessage}`;
+
+      window.open(whatsappApiUrl, '_blank');
+      connectionForm.reset();
+      thankYouModal.classList.add('active');
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      thankYouModal.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
