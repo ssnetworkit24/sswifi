@@ -11,9 +11,6 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Swiper CSS (For Banner Slider) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
   <!-- Google Fonts: Poppins + Kalpurush -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,6 +18,10 @@
   
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Swiper CSS (Slider Integration) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <style>
     * {
       margin: 0;
@@ -253,23 +254,50 @@
     }
     .thankyou-card i { font-size: 60px; color: #4CAF50; margin-bottom: 16px; }
 
-    /* SWIPER CUSTOM STYLES */
-    .swiper-pagination-bullet-active {
-      background: #E31E24 !important;
-      width: 24px !important;
-      border-radius: 8px !important;
+    /* ========== SWIPER SLIDER CUSTOM STYLING ========== */
+    .hero-slider {
+      width: 100%;
+      max-width: 550px; /* ১২৫৪x১২৫৪ স্লাইডারের জন্য একদম নিখুঁত সাইজ */
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    .swiper-slide {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f3f4f6;
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
     }
     .swiper-button-next, .swiper-button-prev {
       color: #E31E24 !important;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       width: 42px !important;
       height: 42px !important;
       border-radius: 50%;
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: all 0.2s ease;
     }
     .swiper-button-next:after, .swiper-button-prev:after {
       font-size: 18px !important;
       font-weight: bold;
+    }
+    .swiper-button-next:hover, .swiper-button-prev:hover {
+      background: #E31E24;
+      color: #ffffff !important;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: #E31E24 !important;
+      width: 22px !important;
+      border-radius: 10px !important;
     }
   </style>
 </head>
@@ -320,63 +348,8 @@
     </div>
   </header>
 
-  <!-- ========== BANNER SLIDER SECTION (HEADER-এর নিচে যুক্ত করা হয়েছে) ========== -->
-  <section class="pt-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <div class="swiper mainSlider rounded-3xl overflow-hidden shadow-lg border border-gray-100">
-        <div class="swiper-wrapper">
-          
-          <!-- Slide 1 -->
-          <div class="swiper-slide relative bg-gradient-to-r from-red-600 to-red-800 text-white min-h-[300px] md:min-h-[400px] flex items-center p-8 md:p-14">
-            <div class="max-w-2xl z-10">
-              <span class="bg-white/20 backdrop-blur-md text-white text-xs md:text-sm font-semibold px-4 py-1.5 rounded-full inline-block mb-4">বিশেষ অফার</span>
-              <h2 class="font-poppins font-extrabold text-2xl sm:text-4xl md:text-5xl leading-tight mb-4">নতুন সংযোগে পাচ্ছেন ফ্রী ইনস্টলেশন!</h2>
-              <p class="text-white/90 text-sm md:text-lg mb-6">উচ্চগতির ফাইবার অপটিক ইন্টারনেট সংযোগ নিন আপনার বাসা বা অফিসে।</p>
-              <a href="#contact" class="inline-block bg-white text-red-primary font-bold px-7 py-3 rounded-full shadow-md hover:bg-gray-100 transition">কানেকশন নিন</a>
-            </div>
-            <div class="absolute right-6 bottom-4 opacity-10 md:opacity-25 pointer-events-none">
-              <i class="fas fa-wifi text-[180px] md:text-[260px] text-white"></i>
-            </div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="swiper-slide relative bg-gradient-to-r from-blue-600 to-indigo-800 text-white min-h-[300px] md:min-h-[400px] flex items-center p-8 md:p-14">
-            <div class="max-w-2xl z-10">
-              <span class="bg-white/20 backdrop-blur-md text-white text-xs md:text-sm font-semibold px-4 py-1.5 rounded-full inline-block mb-4">২৪/৭ সেবা</span>
-              <h2 class="font-poppins font-extrabold text-2xl sm:text-4xl md:text-5xl leading-tight mb-4">অবিচ্ছিন্ন গেমিং ও ৪K স্ট্রিমিং অভিজ্ঞতা</h2>
-              <p class="text-white/90 text-sm md:text-lg mb-6">কোনো বাফারিং ছাড়াই উপভোগ করুন যেকোনো গেম এবং ভিডিও স্ট্রিমিং।</p>
-              <a href="#packages" class="inline-block bg-white text-blue-600 font-bold px-7 py-3 rounded-full shadow-md hover:bg-gray-100 transition">প্যাকেজসমূহ</a>
-            </div>
-            <div class="absolute right-6 bottom-4 opacity-10 md:opacity-25 pointer-events-none">
-              <i class="fas fa-gamepad text-[180px] md:text-[260px] text-white"></i>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="swiper-slide relative bg-gradient-to-r from-emerald-600 to-teal-800 text-white min-h-[300px] md:min-h-[400px] flex items-center p-8 md:p-14">
-            <div class="max-w-2xl z-10">
-              <span class="bg-white/20 backdrop-blur-md text-white text-xs md:text-sm font-semibold px-4 py-1.5 rounded-full inline-block mb-4">স্মার্ট কানেক্টিভিটি</span>
-              <h2 class="font-poppins font-extrabold text-2xl sm:text-4xl md:text-5xl leading-tight mb-4">আপনার ব্যবসার জন্য ডেডিকেটেড ব্যান্ডউইথ</h2>
-              <p class="text-white/90 text-sm md:text-lg mb-6">করপোরেট ও শপের জন্য সর্বোচ্চ নির্ভরযোগ্য ও দ্রুতগতির ইন্টারনেট সেবা।</p>
-              <a href="https://wa.me/8801716729140" target="_blank" class="inline-block bg-white text-emerald-700 font-bold px-7 py-3 rounded-full shadow-md hover:bg-gray-100 transition">কথা বলুন</a>
-            </div>
-            <div class="absolute right-6 bottom-4 opacity-10 md:opacity-25 pointer-events-none">
-              <i class="fas fa-network-wired text-[180px] md:text-[260px] text-white"></i>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Pagination & Navigation Buttons -->
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next hidden sm:flex"></div>
-        <div class="swiper-button-prev hidden sm:flex"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== HERO SECTION ========== -->
-  <section id="home" class="pt-12 md:pt-16 pb-8 bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
+  <!-- ========== HERO SECTION WITH SLIDER ========== -->
+  <section id="home" class="pt-28 md:pt-36 pb-8 bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
     <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center gap-10">
       <div class="flex-1 text-center md:text-left">
         <h1 class="font-poppins font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-5xl leading-tight text-dark max-w-fit mx-auto md:mx-0">
@@ -398,8 +371,36 @@
         </div>
       </div>
 
-      <div class="flex-1 flex justify-center mt-2 md:mt-0">
-        <div class="w-56 h-56 md:w-72 md:h-72 rounded-full gradient-accent opacity-20 blur-3xl"></div>
+      <!-- স্লাইডার কন্টেইনার (৫টি ১২৫৪x১২৫৪ স্লাইড সহ) -->
+      <div class="flex-1 w-full flex justify-center mt-2 md:mt-0">
+        <div class="swiper hero-slider">
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <img src="slide1.jpg" alt="SS Network Banner 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/E31E24/FFFFFF?text=Slide+1';" />
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+              <img src="slide2.jpg" alt="SS Network Banner 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/2196F3/FFFFFF?text=Slide+2';" />
+            </div>
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+              <img src="slide3.jpg" alt="SS Network Banner 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/4CAF50/FFFFFF?text=Slide+3';" />
+            </div>
+            <!-- Slide 4 -->
+            <div class="swiper-slide">
+              <img src="slide4.jpg" alt="SS Network Banner 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/FF6600/FFFFFF?text=Slide+4';" />
+            </div>
+            <!-- Slide 5 -->
+            <div class="swiper-slide">
+              <img src="slide5.jpg" alt="SS Network Banner 5" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/8E24AA/FFFFFF?text=Slide+5';" />
+            </div>
+          </div>
+          <!-- Pagination & Arrows -->
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -506,7 +507,7 @@
           <a href="#contact" class="mt-6 block text-center bg-green-primary hover:bg-green-600 text-white font-semibold py-2.5 rounded-full transition">সংযোগ নিন</a>
         </div>
 
-        <!-- ========== 70 Mbps ========== -->
+        <!-- 70 Mbps -->
         <div class="bg-white rounded-2xl p-6 shadow-md card-hover border-t-4 border-red-primary flex flex-col justify-between">
           <div>
             <h3 class="font-poppins font-bold text-2xl">70 Mbps</h3>
@@ -630,7 +631,6 @@
         </div>
         <p class="mt-3 text-sm font-semibold text-gray-300">WE ALWAYS PROVIDE BEST SERVICE</p>
         
-        <!-- ========== লোকেশন আইকন সহ দৃশ্যমান টেক্সট ========== -->
         <p class="mt-4 text-sm leading-relaxed text-gray-300 flex items-start gap-2">
           <i class="fas fa-map-marker-alt text-red-primary text-base mt-1"></i>
           <span class="text-gray-300">Alom House, 2nd floor, Islamia Road, Sonapur, Sadar, Noakhali.</span>
@@ -662,12 +662,16 @@
           </a>
         </p>
 
+        <!-- সোশ্যাল মিডিয়া আইকনসমূহ (ইউটিউব যুক্ত করা হয়েছে) -->
         <div class="flex gap-4 text-xl">
           <a href="https://www.facebook.com/share/14psW5MGT5i/" target="_blank" class="text-gray-300 hover:text-blue-500 transition" aria-label="Facebook">
             <i class="fab fa-facebook"></i>
           </a>
           <a href="https://wa.me/8801716729140" target="_blank" class="text-gray-300 hover:text-green-400 transition" aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.youtube.com/@ssnetwork41" target="_blank" class="text-gray-300 hover:text-red-500 transition" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
           </a>
         </div>
       </div>
@@ -696,7 +700,7 @@
     </div>
   </div>
 
-  <!-- Swiper JS Library -->
+  <!-- Swiper JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <!-- JavaScript Logics -->
@@ -719,12 +723,13 @@
     });
 
     // Swiper Slider Initialization
-    const swiper = new Swiper('.mainSlider', {
+    const swiper = new Swiper('.hero-slider', {
       loop: true,
       autoplay: {
-        delay: 4500,
+        delay: 3500,
         disableOnInteraction: false,
       },
+      grabCursor: true,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
