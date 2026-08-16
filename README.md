@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Kalpurush:wght@400;500;600;700&display=swap" rel="stylesheet" />
   
   <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <!-- Swiper CSS (Slider Integration) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -73,7 +73,7 @@
 
     /* ========== ফুটার টেক্সট দৃশ্যমান করা ========== */
     footer p, footer li, footer a, footer span, footer h4 {
-      color: #d1d5db !important;  /* হালকা ধূসর - দৃশ্যমান */
+      color: #d1d5db !important;
     }
     footer a:hover {
       color: #ffffff !important;
@@ -82,9 +82,6 @@
       color: #ffffff !important;
     }
     footer .text-red-primary {
-      color: #E31E24 !important;
-    }
-    footer .fa-map-marker-alt {
       color: #E31E24 !important;
     }
 
@@ -254,49 +251,53 @@
     }
     .thankyou-card i { font-size: 60px; color: #4CAF50; margin-bottom: 16px; }
 
-    /* ========== SWIPER SLIDER CUSTOM STYLING ========== */
-    .hero-slider {
+    /* ========== FULL SCREEN RESPONSIVE SWIPER SLIDER ========== */
+    .hero-slider-section {
       width: 100%;
-      max-width: 550px; /* ১২৫৪x১২৫৪ স্লাইডারের জন্য একদম নিখুঁত সাইজ */
-      margin: 0 auto;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      background: #000;
+    }
+    .main-hero-swiper {
+      width: 100%;
+      max-height: 520px;
+    }
+    @media (max-width: 768px) {
+      .main-hero-swiper {
+        max-height: 380px;
+      }
     }
     .swiper-slide {
-      aspect-ratio: 1 / 1;
       width: 100%;
       display: flex;
-      align-items: center;
       justify-content: center;
-      background-color: #f3f4f6;
+      align-items: center;
+      overflow: hidden;
+      background: #000;
     }
     .swiper-slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      border-radius: 20px;
+      object-fit: contain; /* ১০৮০×১৩৫০ ছবি কোনরকম জুম বা কাটা ছাড়া ফুল দেখাবে */
+      max-height: 520px;
     }
     .swiper-button-next, .swiper-button-prev {
-      color: #E31E24 !important;
-      background: rgba(255, 255, 255, 0.85);
-      width: 42px !important;
-      height: 42px !important;
+      color: #ffffff !important;
+      background: rgba(0, 0, 0, 0.4);
+      width: 45px !important;
+      height: 45px !important;
       border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
       transition: all 0.2s ease;
-    }
-    .swiper-button-next:after, .swiper-button-prev:after {
-      font-size: 18px !important;
-      font-weight: bold;
     }
     .swiper-button-next:hover, .swiper-button-prev:hover {
       background: #E31E24;
-      color: #ffffff !important;
+    }
+    .swiper-pagination-bullet {
+      background: #ffffff !important;
+      opacity: 0.6;
     }
     .swiper-pagination-bullet-active {
-      background-color: #E31E24 !important;
-      width: 22px !important;
+      background: #E31E24 !important;
+      opacity: 1;
+      width: 20px !important;
       border-radius: 10px !important;
     }
   </style>
@@ -348,8 +349,34 @@
     </div>
   </header>
 
-  <!-- ========== HERO SECTION WITH SLIDER ========== -->
-  <section id="home" class="pt-28 md:pt-36 pb-8 bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
+  <!-- ========== SLIDER SECTION (HEAD-ER ER NICHE FULL WIDTH SLIDER) ========== -->
+  <section class="hero-slider-section pt-20">
+    <div class="swiper main-hero-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="slide1.jpg" alt="Slide 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/1080x1350/E31E24/FFFFFF?text=Slide+1';" />
+        </div>
+        <div class="swiper-slide">
+          <img src="slide2.jpg" alt="Slide 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/1080x1350/2196F3/FFFFFF?text=Slide+2';" />
+        </div>
+        <div class="swiper-slide">
+          <img src="slide3.jpg" alt="Slide 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/1080x1350/4CAF50/FFFFFF?text=Slide+3';" />
+        </div>
+        <div class="swiper-slide">
+          <img src="slide4.jpg" alt="Slide 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/1080x1350/FF6600/FFFFFF?text=Slide+4';" />
+        </div>
+        <div class="swiper-slide">
+          <img src="slide5.jpg" alt="Slide 5" onerror="this.onerror=null; this.src='https://via.placeholder.com/1080x1350/8E24AA/FFFFFF?text=Slide+5';" />
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+
+  <!-- ========== HERO TEXT SECTION (আগের মতই পুরোপুরি অক্ষত) ========== -->
+  <section id="home" class="pt-12 pb-16 bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
     <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center gap-10">
       <div class="flex-1 text-center md:text-left">
         <h1 class="font-poppins font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-5xl leading-tight text-dark max-w-fit mx-auto md:mx-0">
@@ -371,36 +398,8 @@
         </div>
       </div>
 
-      <!-- স্লাইডার কন্টেইনার (৫টি ১২৫৪x১২৫৪ স্লাইড সহ) -->
-      <div class="flex-1 w-full flex justify-center mt-2 md:mt-0">
-        <div class="swiper hero-slider">
-          <div class="swiper-wrapper">
-            <!-- Slide 1 -->
-            <div class="swiper-slide">
-              <img src="slide1.jpg" alt="SS Network Banner 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/E31E24/FFFFFF?text=Slide+1';" />
-            </div>
-            <!-- Slide 2 -->
-            <div class="swiper-slide">
-              <img src="slide2.jpg" alt="SS Network Banner 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/2196F3/FFFFFF?text=Slide+2';" />
-            </div>
-            <!-- Slide 3 -->
-            <div class="swiper-slide">
-              <img src="slide3.jpg" alt="SS Network Banner 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/4CAF50/FFFFFF?text=Slide+3';" />
-            </div>
-            <!-- Slide 4 -->
-            <div class="swiper-slide">
-              <img src="slide4.jpg" alt="SS Network Banner 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/FF6600/FFFFFF?text=Slide+4';" />
-            </div>
-            <!-- Slide 5 -->
-            <div class="swiper-slide">
-              <img src="slide5.jpg" alt="SS Network Banner 5" onerror="this.onerror=null; this.src='https://via.placeholder.com/1254x1254/8E24AA/FFFFFF?text=Slide+5';" />
-            </div>
-          </div>
-          <!-- Pagination & Arrows -->
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-        </div>
+      <div class="flex-1 flex justify-center mt-2 md:mt-0">
+        <div class="w-56 h-56 md:w-72 md:h-72 rounded-full gradient-accent opacity-20 blur-3xl"></div>
       </div>
     </div>
   </section>
@@ -631,8 +630,9 @@
         </div>
         <p class="mt-3 text-sm font-semibold text-gray-300">WE ALWAYS PROVIDE BEST SERVICE</p>
         
+        <!-- লোকেশন আইকন আপডেট করা হয়েছে -->
         <p class="mt-4 text-sm leading-relaxed text-gray-300 flex items-start gap-2">
-          <i class="fas fa-map-marker-alt text-red-primary text-base mt-1"></i>
+          <i class="fa-solid fa-location-dot text-red-primary text-base mt-1"></i>
           <span class="text-gray-300">Alom House, 2nd floor, Islamia Road, Sonapur, Sadar, Noakhali.</span>
         </p>
       </div>
@@ -662,7 +662,6 @@
           </a>
         </p>
 
-        <!-- সোশ্যাল মিডিয়া আইকনসমূহ (ইউটিউব যুক্ত করা হয়েছে) -->
         <div class="flex gap-4 text-xl">
           <a href="https://www.facebook.com/share/14psW5MGT5i/" target="_blank" class="text-gray-300 hover:text-blue-500 transition" aria-label="Facebook">
             <i class="fab fa-facebook"></i>
@@ -723,7 +722,7 @@
     });
 
     // Swiper Slider Initialization
-    const swiper = new Swiper('.hero-slider', {
+    const swiper = new Swiper('.main-hero-swiper', {
       loop: true,
       autoplay: {
         delay: 3500,
