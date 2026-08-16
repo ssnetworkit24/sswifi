@@ -23,29 +23,29 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      overflow-x: hidden !important;
       font-family: 'Kalpurush', 'Poppins', sans-serif;
       background: #ffffff;
       color: #1a1a1a;
       scroll-behavior: smooth;
     }
+    
     h1, h2, h3, h4, .font-poppins {
       font-family: 'Poppins', sans-serif;
     }
     
-    /* ========== Kalpurush ফন্ট ========== */
+    /* ========== Kalpurush ফন্ট (প্রথম কোডের মতো) ========== */
     p, li, label, select, input, textarea, .description, .service-text, 
     .form-label, .btn-submit, .text-base, .text-sm, .text-xs,
     .font-medium, .font-semibold, .font-bold {
       font-family: 'Kalpurush', sans-serif !important;
     }
     
-    /* প্যারাগ্রাফ টেক্সট বড়, গাঢ় ও স্পষ্ট */
+    /* প্যারাগ্রাফ টেক্সট আগের মতো স্পষ্ট ও বড় */
     p, li, label, select, input, textarea, .description, .service-text {
       font-size: 18px !important;
       font-weight: 500 !important;
@@ -53,37 +53,27 @@
       color: #1a1a1a !important;
     }
     
-    /* ছোট টেক্সটের জন্য */
     .text-xs, .text-sm {
       font-size: 15px !important;
       font-weight: 400 !important;
       line-height: 1.6 !important;
     }
     
-    /* প্যাকেজের লিস্ট আইটেমগুলো */
     .space-y-2 li, .space-y-2\.5 li {
       font-size: 17px !important;
       font-weight: 500 !important;
     }
 
-    /* ========== SS NETWORK নীল করা ========== */
     .ss-network-blue {
       color: #2196F3 !important;
     }
 
-    /* ========== ফুটার টেক্সট দৃশ্যমান করা ========== */
     footer p, footer li, footer a, footer span, footer h4 {
       color: #d1d5db !important;
     }
-    footer a:hover {
-      color: #ffffff !important;
-    }
-    footer .text-white {
-      color: #ffffff !important;
-    }
-    footer .text-red-primary {
-      color: #E31E24 !important;
-    }
+    footer a:hover { color: #ffffff !important; }
+    footer .text-white { color: #ffffff !important; }
+    footer .text-red-primary { color: #E31E24 !important; }
 
     .bg-red-primary { background-color: #E31E24; }
     .text-red-primary { color: #E31E24; }
@@ -99,6 +89,7 @@
     .bg-yellow-primary { background-color: #D81B60; }
     .text-yellow-primary { color: #D81B60; }
 
+    /* ========== মূল টেক্সট এনিমেশন (অরিজিনাল) ========== */
     .gradient-accent {
       background: linear-gradient(135deg, #E31E24, #FF6600, #2196F3, #4CAF50);
       background-size: 300% 300%;
@@ -116,7 +107,7 @@
       backdrop-filter: blur(4px);
     }
 
-    /* FLOATING WHATSAPP - RIGHT SIDE */
+    /* FLOATING WHATSAPP */
     .whatsapp-float {
       position: fixed;
       bottom: 28px;
@@ -222,7 +213,7 @@
       box-shadow: 0 8px 20px rgba(227, 30, 36, 0.3);
     }
 
-    /* THANK YOU MODAL OVERLAY */
+    /* THANK YOU MODAL */
     .thankyou-overlay {
       position: fixed;
       inset: 0;
@@ -251,39 +242,40 @@
     }
     .thankyou-card i { font-size: 60px; color: #4CAF50; margin-bottom: 16px; }
 
-    /* ========== FULL SCREEN RESPONSIVE SWIPER SLIDER ========== */
+    /* ========== SLIDER FIT FIX (FULL VISIBILITY) ========== */
     .hero-slider-section {
       width: 100%;
       background: #000;
+      margin-top: 80px; /* হেডারের ঠিক নিচে পজিশন */
     }
     .main-hero-swiper {
       width: 100%;
-      max-height: 520px;
-    }
-    @media (max-width: 768px) {
-      .main-hero-swiper {
-        max-height: 380px;
-      }
+      height: auto;
     }
     .swiper-slide {
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
       background: #000;
     }
     .swiper-slide img {
       width: 100%;
-      height: 100%;
-      object-fit: contain; /* ১০৮০×১৩৫০ ছবি কোনরকম জুম বা কাটা ছাড়া ফুল দেখাবে */
-      max-height: 520px;
+      height: auto;
+      max-height: 580px;
+      object-fit: contain;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .swiper-slide img {
+        max-height: 420px;
+      }
     }
     .swiper-button-next, .swiper-button-prev {
       color: #ffffff !important;
       background: rgba(0, 0, 0, 0.4);
-      width: 45px !important;
-      height: 45px !important;
+      width: 42px !important;
+      height: 42px !important;
       border-radius: 50%;
       transition: all 0.2s ease;
     }
@@ -297,7 +289,7 @@
     .swiper-pagination-bullet-active {
       background: #E31E24 !important;
       opacity: 1;
-      width: 20px !important;
+      width: 22px !important;
       border-radius: 10px !important;
     }
   </style>
@@ -349,8 +341,8 @@
     </div>
   </header>
 
-  <!-- ========== SLIDER SECTION (HEAD-ER ER NICHE FULL WIDTH SLIDER) ========== -->
-  <section class="hero-slider-section pt-20">
+  <!-- ========== SLIDER SECTION (HEAD-ER ER NICHE PERFECTLY POSITIONED) ========== -->
+  <section class="hero-slider-section">
     <div class="swiper main-hero-swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -375,16 +367,17 @@
     </div>
   </section>
 
-  <!-- ========== HERO TEXT SECTION (আগের মতই পুরোপুরি অক্ষত) ========== -->
-  <section id="home" class="pt-12 pb-16 bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
+  <!-- ========== HERO TEXT SECTION (আগের অরিজিনাল এনিমেশন ও টেক্সট সহ) ========== -->
+  <section id="home" class="py-12 bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
     <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center gap-10">
       <div class="flex-1 text-center md:text-left">
-        <h1 class="font-poppins font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-5xl leading-tight text-dark max-w-fit mx-auto md:mx-0">
+        <h1 class="font-poppins font-extrabold text-3xl sm:text-4xl md:text-5xl leading-tight text-dark max-w-fit mx-auto md:mx-0">
           <span class="block whitespace-nowrap">হাই-স্পিড ইন্টারনেট</span>
           <span class="block whitespace-nowrap text-red-primary mt-1">এখন আপনার শহরে</span>
         </h1>
         
-        <div class="mt-4 text-lg md:text-xl font-semibold text-gray-700">
+        <!-- মূল এনিমেশন সহ টেক্সট -->
+        <div class="mt-4 text-lg md:text-xl font-semibold">
           <span class="gradient-accent text-transparent bg-clip-text">WE ALWAYS PROVIDE BEST SERVICE</span>
         </div>
 
@@ -630,7 +623,6 @@
         </div>
         <p class="mt-3 text-sm font-semibold text-gray-300">WE ALWAYS PROVIDE BEST SERVICE</p>
         
-        <!-- লোকেশন আইকন আপডেট করা হয়েছে -->
         <p class="mt-4 text-sm leading-relaxed text-gray-300 flex items-start gap-2">
           <i class="fa-solid fa-location-dot text-red-primary text-base mt-1"></i>
           <span class="text-gray-300">Alom House, 2nd floor, Islamia Road, Sonapur, Sadar, Noakhali.</span>
@@ -681,7 +673,7 @@
     </div>
   </footer>
 
-  <!-- ========== FLOATING WHATSAPP (RIGHT SIDE) ========== -->
+  <!-- ========== FLOATING WHATSAPP ========== -->
   <a href="https://wa.me/8801716729140" target="_blank" class="whatsapp-float" aria-label="WhatsApp chat">
     <i class="fab fa-whatsapp"></i>
     <span class="tooltip">WhatsApp-এ নক দিন</span>
@@ -704,7 +696,6 @@
 
   <!-- JavaScript Logics -->
   <script>
-    // Header Scroll Shadow
     const header = document.getElementById('mainHeader');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 20) {
@@ -714,14 +705,12 @@
       }
     });
 
-    // Mobile Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('open');
     });
 
-    // Swiper Slider Initialization
     const swiper = new Swiper('.main-hero-swiper', {
       loop: true,
       autoplay: {
@@ -739,7 +728,6 @@
       },
     });
 
-    // Form Submission Logic to WhatsApp
     const connectionForm = document.getElementById('connectionForm');
     const thankYouModal = document.getElementById('thankYouModal');
     const closeModalBtn = document.getElementById('closeModalBtn');
