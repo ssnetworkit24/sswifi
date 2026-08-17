@@ -69,7 +69,7 @@
 
     /* ========== ফুটার টেক্সট দৃশ্যমান করা ========== */
     footer p, footer li, footer a, footer span, footer h4 {
-      color: #d1d5db !important;  /* হালকা ধূসর - দৃশ্যমান */
+      color: #d1d5db !important;
     }
     footer a:hover {
       color: #ffffff !important;
@@ -250,8 +250,7 @@
     }
     .thankyou-card i { font-size: 60px; color: #4CAF50; margin-bottom: 16px; }
 
-
-    /* ========== SLIDER SECTION STYLES (NEW) ========== */
+    /* ========== SLIDER SECTION STYLES ========== */
     .slider-container {
       width: 100%;
       max-width: 1280px;
@@ -298,7 +297,6 @@
       background: #d1d5db;
     }
 
-    /* Slider Buttons */
     .slider-btn {
       position: absolute;
       top: 50%;
@@ -327,7 +325,6 @@
     .slider-btn.prev { left: 16px; }
     .slider-btn.next { right: 16px; }
 
-    /* Dots */
     .slider-dots {
       display: flex;
       justify-content: center;
@@ -358,7 +355,6 @@
       background: #E31E24;
     }
 
-    /* Mobile adjustments */
     @media (max-width: 640px) {
       .slider-container {
         padding: 0 8px;
@@ -383,7 +379,6 @@
       }
     }
 
-    /* touch & drag hints */
     .slider-wrapper {
       touch-action: pan-y;
       user-select: none;
@@ -393,7 +388,7 @@
 </head>
 <body>
 
-  <!-- ========== HEADER (অপরিবর্তিত) ========== -->
+  <!-- ========== HEADER ========== -->
   <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 bg-white/90 transition-all duration-300 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-20">
       <div class="flex items-center gap-2.5">
@@ -439,32 +434,35 @@
   </header>
 
   <!-- ============================================================ -->
-  <!-- ========== SLIDER SECTION (NEW - হেডার ও হিরোর মাঝে) ========= -->
+  <!-- ========== SLIDER SECTION (হেডার ও হিরোর মাঝে) ========= -->
   <!-- ============================================================ -->
   <section class="slider-container pt-28 md:pt-36 pb-4">
-    <!-- Slider Wrapper -->
     <div class="slider-wrapper" id="sliderWrapper">
       <div class="slider-track" id="sliderTrack">
+        
+        <!-- ===== আপনার GitHub ইমেজ এখানে বসান ===== -->
         <!-- Slide 1 -->
         <div class="slide">
-          <img src="https://picsum.photos/id/1/800/450" alt="Slide 1" loading="lazy" />
+          <img src="slide1.jpg" alt="SS Network অফার ১" loading="lazy" />
         </div>
         <!-- Slide 2 -->
         <div class="slide">
-          <img src="https://picsum.photos/id/26/800/450" alt="Slide 2" loading="lazy" />
+          <img src="slide2.jpg" alt="SS Network অফার ২" loading="lazy" />
         </div>
         <!-- Slide 3 -->
         <div class="slide">
-          <img src="https://picsum.photos/id/37/800/450" alt="Slide 3" loading="lazy" />
+          <img src="slide3.jpg" alt="SS Network অফার ৩" loading="lazy" />
         </div>
         <!-- Slide 4 -->
         <div class="slide">
-          <img src="https://picsum.photos/id/58/800/450" alt="Slide 4" loading="lazy" />
+          <img src="slide4.jpg" alt="SS Network অফার ৪" loading="lazy" />
         </div>
         <!-- Slide 5 -->
         <div class="slide">
-          <img src="https://picsum.photos/id/69/800/450" alt="Slide 5" loading="lazy" />
+          <img src="slide5.jpg" alt="SS Network অফার ৫" loading="lazy" />
         </div>
+        <!-- ===== ইমেজ শেষ ===== -->
+        
       </div>
 
       <!-- Prev / Next Buttons -->
@@ -477,12 +475,10 @@
     </div>
 
     <!-- Dots / Indicators -->
-    <div class="slider-dots" id="sliderDots">
-      <!-- 5 dots will be injected by JS -->
-    </div>
+    <div class="slider-dots" id="sliderDots"></div>
   </section>
 
-  <!-- ========== HERO SECTION (অপরিবর্তিত) ========== -->
+  <!-- ========== HERO SECTION ========== -->
   <section id="home" class="pt-8 pb-8 bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
     <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center gap-10">
       <div class="flex-1 text-center md:text-left">
@@ -511,7 +507,7 @@
     </div>
   </section>
 
-  <!-- ========== WHY SS NETWORK SECTION (অপরিবর্তিত) ========== -->
+  <!-- ========== WHY SS NETWORK SECTION ========== -->
   <section id="why" class="py-14 bg-white border-t border-gray-100">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="font-poppins font-bold text-3xl md:text-4xl text-center text-dark mb-3">
@@ -563,7 +559,7 @@
     </div>
   </section>
 
-  <!-- ========== PACKAGES SECTION (অপরিবর্তিত) ========== -->
+  <!-- ========== PACKAGES SECTION ========== -->
   <section id="packages" class="py-16 bg-soft-gray border-t border-gray-200/60">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="font-poppins font-bold text-4xl text-center text-dark mb-2">আমাদের <span class="text-red-primary">প্যাকেজ</span></h2>
@@ -613,7 +609,7 @@
           <a href="#contact" class="mt-6 block text-center bg-green-primary hover:bg-green-600 text-white font-semibold py-2.5 rounded-full transition">সংযোগ নিন</a>
         </div>
 
-        <!-- 70 Mbps - দাম ৯৯৯ -->
+        <!-- 70 Mbps -->
         <div class="bg-white rounded-2xl p-6 shadow-md card-hover border-t-4 border-red-primary flex flex-col justify-between">
           <div>
             <h3 class="font-poppins font-bold text-2xl">70 Mbps</h3>
@@ -664,7 +660,7 @@
     </div>
   </section>
 
-  <!-- ========== CONTACT FORM SECTION (অপরিবর্তিত) ========== -->
+  <!-- ========== CONTACT FORM SECTION ========== -->
   <section id="contact" class="py-16 bg-white">
     <div class="max-w-3xl mx-auto px-4">
       <h2 class="font-poppins font-bold text-3xl md:text-4xl text-center text-dark mb-2">নতুন কানেকশনের জন্য <span class="text-red-primary">যোগাযোগ করুন</span></h2>
@@ -727,7 +723,7 @@
     </div>
   </section>
 
-  <!-- ========== FOOTER (অপরিবর্তিত) ========== -->
+  <!-- ========== FOOTER ========== -->
   <footer class="bg-[#1a1a1a] pt-16 pb-6">
     <div class="max-w-6xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <div>
@@ -784,7 +780,7 @@
     </div>
   </footer>
 
-  <!-- ========== FLOATING WHATSAPP (RIGHT SIDE) ========== -->
+  <!-- ========== FLOATING WHATSAPP ========== -->
   <a href="https://wa.me/8801716729140" target="_blank" class="whatsapp-float" aria-label="WhatsApp chat">
     <i class="fab fa-whatsapp"></i>
     <span class="tooltip">WhatsApp-এ নক দিন</span>
@@ -802,14 +798,13 @@
     </div>
   </div>
 
-  <!-- ================================================================= -->
-  <!-- ========== SLIDER JAVASCRIPT (NEW - সম্পূর্ণ ভ্যানিলা) ========= -->
-  <!-- ================================================================= -->
+  <!-- ============================================================ -->
+  <!-- ========== SLIDER JAVASCRIPT ========= -->
+  <!-- ============================================================ -->
   <script>
     (function() {
       "use strict";
 
-      // DOM Elements
       const track = document.getElementById('sliderTrack');
       const slides = track.querySelectorAll('.slide');
       const totalSlides = slides.length;
@@ -836,7 +831,6 @@
       }
       createDots();
 
-      // Update dots
       function updateDots(index) {
         const allDots = dotsContainer.querySelectorAll('.slider-dot');
         allDots.forEach((dot, i) => {
@@ -844,7 +838,6 @@
         });
       }
 
-      // Go to specific slide
       function goToSlide(index) {
         if (isTransitioning) return;
         if (index < 0) index = totalSlides - 1;
@@ -856,7 +849,6 @@
         resetAutoSlide();
       }
 
-      // Next / Prev
       function nextSlide() {
         if (isTransitioning) return;
         goToSlide(currentIndex + 1);
@@ -867,7 +859,6 @@
         goToSlide(currentIndex - 1);
       }
 
-      // Auto slide
       function startAutoSlide() {
         if (autoSlideInterval) clearInterval(autoSlideInterval);
         autoSlideInterval = setInterval(nextSlide, 4500);
@@ -880,14 +871,13 @@
         }
       }
 
-      // Transition end handler
       function onTransitionEnd() {
         isTransitioning = false;
       }
 
       track.addEventListener('transitionend', onTransitionEnd);
 
-      // --- DRAG / SWIPE (mouse & touch) ---
+      // --- DRAG / SWIPE ---
       let startX = 0;
       let endX = 0;
       let isDragging = false;
@@ -914,44 +904,36 @@
         track.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         const event = e.changedTouches ? e.changedTouches[0] : e;
         const diff = event.clientX - startX;
-        const threshold = 50; // pixels
+        const threshold = 50;
         if (diff > threshold) {
           prevSlide();
         } else if (diff < -threshold) {
           nextSlide();
         } else {
-          // snap back
           goToSlide(currentIndex);
         }
       }
 
-      // Mouse events
       const wrapper = document.getElementById('sliderWrapper');
       wrapper.addEventListener('mousedown', handleDragStart);
       window.addEventListener('mousemove', handleDragMove);
       window.addEventListener('mouseup', handleDragEnd);
 
-      // Touch events
       wrapper.addEventListener('touchstart', handleDragStart, { passive: true });
       window.addEventListener('touchmove', handleDragMove, { passive: true });
       window.addEventListener('touchend', handleDragEnd, { passive: true });
 
-      // Buttons
       prevBtn.addEventListener('click', prevSlide);
       nextBtn.addEventListener('click', nextSlide);
 
-      // Keyboard accessibility
       wrapper.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') prevSlide();
         if (e.key === 'ArrowRight') nextSlide();
       });
-      // Make wrapper focusable for keyboard
       wrapper.setAttribute('tabindex', '0');
 
-      // Start auto slide
       startAutoSlide();
 
-      // Pause auto on hover (optional)
       wrapper.addEventListener('mouseenter', () => {
         if (autoSlideInterval) clearInterval(autoSlideInterval);
       });
@@ -960,7 +942,6 @@
         startAutoSlide();
       });
 
-      // Clean up (optional but good practice)
       window.addEventListener('beforeunload', function() {
         if (autoSlideInterval) clearInterval(autoSlideInterval);
       });
@@ -968,7 +949,7 @@
     })();
   </script>
 
-  <!-- ========== EXISTING JAVASCRIPT (Header, Form, Modal) ========= -->
+  <!-- ========== MAIN JAVASCRIPT (Header, Form, Modal) ========= -->
   <script>
     // Header Scroll Shadow
     const header = document.getElementById('mainHeader');
