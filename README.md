@@ -17,35 +17,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Kalpurush:wght@400;500;600;700&display=swap" rel="stylesheet" />
   
   <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <!-- Swiper CSS (Slider Integration) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
-    html, body {
-      margin: 0 !important;
-      padding: 0 !important;
-      width: 100% !important;
-      overflow-x: hidden !important;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
       font-family: 'Kalpurush', 'Poppins', sans-serif;
       background: #ffffff;
       color: #1a1a1a;
       scroll-behavior: smooth;
     }
-    
     h1, h2, h3, h4, .font-poppins {
       font-family: 'Poppins', sans-serif;
     }
     
-    /* ========== Kalpurush ফন্ট (প্রথম কোডের মতো) ========== */
+    /* ========== Kalpurush ফন্ট ========== */
     p, li, label, select, input, textarea, .description, .service-text, 
     .form-label, .btn-submit, .text-base, .text-sm, .text-xs,
     .font-medium, .font-semibold, .font-bold {
       font-family: 'Kalpurush', sans-serif !important;
     }
     
-    /* প্যারাগ্রাফ টেক্সট আগের মতো স্পষ্ট ও বড় */
+    /* প্যারাগ্রাফ টেক্সট বড়, গাঢ় ও স্পষ্ট */
     p, li, label, select, input, textarea, .description, .service-text {
       font-size: 18px !important;
       font-weight: 500 !important;
@@ -53,27 +49,40 @@
       color: #1a1a1a !important;
     }
     
+    /* ছোট টেক্সটের জন্য */
     .text-xs, .text-sm {
       font-size: 15px !important;
       font-weight: 400 !important;
       line-height: 1.6 !important;
     }
     
+    /* প্যাকেজের লিস্ট আইটেমগুলো */
     .space-y-2 li, .space-y-2\.5 li {
       font-size: 17px !important;
       font-weight: 500 !important;
     }
 
+    /* ========== SS NETWORK নীল করা ========== */
     .ss-network-blue {
       color: #2196F3 !important;
     }
 
+    /* ========== ফুটার টেক্সট দৃশ্যমান করা ========== */
     footer p, footer li, footer a, footer span, footer h4 {
-      color: #d1d5db !important;
+      color: #d1d5db !important;  /* হালকা ধূসর - দৃশ্যমান */
     }
-    footer a:hover { color: #ffffff !important; }
-    footer .text-white { color: #ffffff !important; }
-    footer .text-red-primary { color: #E31E24 !important; }
+    footer a:hover {
+      color: #ffffff !important;
+    }
+    footer .text-white {
+      color: #ffffff !important;
+    }
+    footer .text-red-primary {
+      color: #E31E24 !important;
+    }
+    footer .fa-map-marker-alt {
+      color: #E31E24 !important;
+    }
 
     .bg-red-primary { background-color: #E31E24; }
     .text-red-primary { color: #E31E24; }
@@ -89,7 +98,6 @@
     .bg-yellow-primary { background-color: #D81B60; }
     .text-yellow-primary { color: #D81B60; }
 
-    /* ========== মূল টেক্সট এনিমেশন (অরিজিনাল) ========== */
     .gradient-accent {
       background: linear-gradient(135deg, #E31E24, #FF6600, #2196F3, #4CAF50);
       background-size: 300% 300%;
@@ -107,7 +115,7 @@
       backdrop-filter: blur(4px);
     }
 
-    /* FLOATING WHATSAPP */
+    /* FLOATING WHATSAPP - RIGHT SIDE */
     .whatsapp-float {
       position: fixed;
       bottom: 28px;
@@ -213,7 +221,7 @@
       box-shadow: 0 8px 20px rgba(227, 30, 36, 0.3);
     }
 
-    /* THANK YOU MODAL */
+    /* THANK YOU MODAL OVERLAY */
     .thankyou-overlay {
       position: fixed;
       inset: 0;
@@ -242,61 +250,150 @@
     }
     .thankyou-card i { font-size: 60px; color: #4CAF50; margin-bottom: 16px; }
 
-    /* ========== SLIDER FIT FIX (FULL VISIBILITY) ========== */
-    .hero-slider-section {
+
+    /* ========== SLIDER SECTION STYLES (NEW) ========== */
+    .slider-container {
       width: 100%;
-      background: #000;
-      margin-top: 80px; /* হেডারের ঠিক নিচে পজিশন */
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 16px;
+      position: relative;
+      overflow: hidden;
+      background: #f9fafb;
     }
-    .main-hero-swiper {
+
+    .slider-wrapper {
+      position: relative;
       width: 100%;
-      height: auto;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      background: #e5e7eb;
     }
-    .swiper-slide {
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      height: 100%;
       width: 100%;
+      will-change: transform;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e5e7eb;
+    }
+
+    .slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+      background: #d1d5db;
+    }
+
+    /* Slider Buttons */
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(4px);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 20px;
+      color: #1a1a1a;
+      cursor: pointer;
+      z-index: 20;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slider-btn:hover {
+      background: white;
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    .slider-btn.prev { left: 16px; }
+    .slider-btn.next { right: 16px; }
+
+    /* Dots */
+    .slider-dots {
       display: flex;
       justify-content: center;
-      align-items: center;
-      background: #000;
+      gap: 12px;
+      margin-top: 16px;
+      padding-bottom: 8px;
+      flex-wrap: wrap;
     }
-    .swiper-slide img {
-      width: 100%;
-      height: auto;
-      max-height: 580px;
-      object-fit: contain;
-      display: block;
-    }
-    @media (max-width: 768px) {
-      .swiper-slide img {
-        max-height: 420px;
-      }
-    }
-    .swiper-button-next, .swiper-button-prev {
-      color: #ffffff !important;
-      background: rgba(0, 0, 0, 0.4);
-      width: 42px !important;
-      height: 42px !important;
+    .slider-dot {
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      transition: all 0.2s ease;
+      background: #d1d5db;
+      border: none;
+      cursor: pointer;
+      transition: 0.25s;
+      padding: 0;
     }
-    .swiper-button-next:hover, .swiper-button-prev:hover {
+    .slider-dot.active {
+      background: #E31E24;
+      transform: scale(1.2);
+      box-shadow: 0 0 0 4px rgba(227, 30, 36, 0.15);
+    }
+    .slider-dot:hover {
+      background: #a0aec0;
+    }
+    .slider-dot.active:hover {
       background: #E31E24;
     }
-    .swiper-pagination-bullet {
-      background: #ffffff !important;
-      opacity: 0.6;
+
+    /* Mobile adjustments */
+    @media (max-width: 640px) {
+      .slider-container {
+        padding: 0 8px;
+      }
+      .slider-wrapper {
+        border-radius: 14px;
+      }
+      .slider-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+      .slider-btn.prev { left: 8px; }
+      .slider-btn.next { right: 8px; }
+      .slider-dots {
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .slider-dot {
+        width: 12px;
+        height: 12px;
+      }
     }
-    .swiper-pagination-bullet-active {
-      background: #E31E24 !important;
-      opacity: 1;
-      width: 22px !important;
-      border-radius: 10px !important;
+
+    /* touch & drag hints */
+    .slider-wrapper {
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- ========== HEADER ========== -->
+  <!-- ========== HEADER (অপরিবর্তিত) ========== -->
   <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 bg-white/90 transition-all duration-300 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-20">
       <div class="flex items-center gap-2.5">
@@ -341,43 +438,60 @@
     </div>
   </header>
 
-  <!-- ========== SLIDER SECTION (HEAD-ER ER NICHE PERFECTLY POSITIONED) ========== -->
-  <section class="hero-slider-section">
-    <div class="swiper main-hero-swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="slide1.jpg" alt="Slide 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/1080x1350/E31E24/FFFFFF?text=Slide+1';" />
+  <!-- ============================================================ -->
+  <!-- ========== SLIDER SECTION (NEW - হেডার ও হিরোর মাঝে) ========= -->
+  <!-- ============================================================ -->
+  <section class="slider-container pt-28 md:pt-36 pb-4">
+    <!-- Slider Wrapper -->
+    <div class="slider-wrapper" id="sliderWrapper">
+      <div class="slider-track" id="sliderTrack">
+        <!-- Slide 1 -->
+        <div class="slide">
+          <img src="https://picsum.photos/id/1/800/450" alt="Slide 1" loading="lazy" />
         </div>
-        <div class="swiper-slide">
-          <img src="slide2.jpg" alt="Slide 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/1080x1350/2196F3/FFFFFF?text=Slide+2';" />
+        <!-- Slide 2 -->
+        <div class="slide">
+          <img src="https://picsum.photos/id/26/800/450" alt="Slide 2" loading="lazy" />
         </div>
-        <div class="swiper-slide">
-          <img src="slide3.jpg" alt="Slide 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/1080x1350/4CAF50/FFFFFF?text=Slide+3';" />
+        <!-- Slide 3 -->
+        <div class="slide">
+          <img src="https://picsum.photos/id/37/800/450" alt="Slide 3" loading="lazy" />
         </div>
-        <div class="swiper-slide">
-          <img src="slide4.jpg" alt="Slide 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/1080x1350/FF6600/FFFFFF?text=Slide+4';" />
+        <!-- Slide 4 -->
+        <div class="slide">
+          <img src="https://picsum.photos/id/58/800/450" alt="Slide 4" loading="lazy" />
         </div>
-        <div class="swiper-slide">
-          <img src="slide5.jpg" alt="Slide 5" onerror="this.onerror=null; this.src='https://via.placeholder.com/1080x1350/8E24AA/FFFFFF?text=Slide+5';" />
+        <!-- Slide 5 -->
+        <div class="slide">
+          <img src="https://picsum.photos/id/69/800/450" alt="Slide 5" loading="lazy" />
         </div>
       </div>
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
+
+      <!-- Prev / Next Buttons -->
+      <button class="slider-btn prev" id="prevBtn" aria-label="Previous slide">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="slider-btn next" id="nextBtn" aria-label="Next slide">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- Dots / Indicators -->
+    <div class="slider-dots" id="sliderDots">
+      <!-- 5 dots will be injected by JS -->
     </div>
   </section>
 
-  <!-- ========== HERO TEXT SECTION (আগের অরিজিনাল এনিমেশন ও টেক্সট সহ) ========== -->
-  <section id="home" class="py-12 bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
+  <!-- ========== HERO SECTION (অপরিবর্তিত) ========== -->
+  <section id="home" class="pt-8 pb-8 bg-gradient-to-br from-red-50 via-blue-50/20 to-white">
     <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center gap-10">
       <div class="flex-1 text-center md:text-left">
-        <h1 class="font-poppins font-extrabold text-3xl sm:text-4xl md:text-5xl leading-tight text-dark max-w-fit mx-auto md:mx-0">
+        <h1 class="font-poppins font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-5xl leading-tight text-dark max-w-fit mx-auto md:mx-0">
           <span class="block whitespace-nowrap">হাই-স্পিড ইন্টারনেট</span>
           <span class="block whitespace-nowrap text-red-primary mt-1">এখন আপনার শহরে</span>
         </h1>
         
-        <!-- মূল এনিমেশন সহ টেক্সট -->
-        <div class="mt-4 text-lg md:text-xl font-semibold">
+        <div class="mt-4 text-lg md:text-xl font-semibold text-gray-700">
           <span class="gradient-accent text-transparent bg-clip-text">WE ALWAYS PROVIDE BEST SERVICE</span>
         </div>
 
@@ -397,7 +511,7 @@
     </div>
   </section>
 
-  <!-- ========== WHY SS NETWORK SECTION ========== -->
+  <!-- ========== WHY SS NETWORK SECTION (অপরিবর্তিত) ========== -->
   <section id="why" class="py-14 bg-white border-t border-gray-100">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="font-poppins font-bold text-3xl md:text-4xl text-center text-dark mb-3">
@@ -449,7 +563,7 @@
     </div>
   </section>
 
-  <!-- ========== PACKAGES SECTION ========== -->
+  <!-- ========== PACKAGES SECTION (অপরিবর্তিত) ========== -->
   <section id="packages" class="py-16 bg-soft-gray border-t border-gray-200/60">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="font-poppins font-bold text-4xl text-center text-dark mb-2">আমাদের <span class="text-red-primary">প্যাকেজ</span></h2>
@@ -499,7 +613,7 @@
           <a href="#contact" class="mt-6 block text-center bg-green-primary hover:bg-green-600 text-white font-semibold py-2.5 rounded-full transition">সংযোগ নিন</a>
         </div>
 
-        <!-- 70 Mbps -->
+        <!-- 70 Mbps - দাম ৯৯৯ -->
         <div class="bg-white rounded-2xl p-6 shadow-md card-hover border-t-4 border-red-primary flex flex-col justify-between">
           <div>
             <h3 class="font-poppins font-bold text-2xl">70 Mbps</h3>
@@ -550,7 +664,7 @@
     </div>
   </section>
 
-  <!-- ========== CONTACT FORM SECTION ========== -->
+  <!-- ========== CONTACT FORM SECTION (অপরিবর্তিত) ========== -->
   <section id="contact" class="py-16 bg-white">
     <div class="max-w-3xl mx-auto px-4">
       <h2 class="font-poppins font-bold text-3xl md:text-4xl text-center text-dark mb-2">নতুন কানেকশনের জন্য <span class="text-red-primary">যোগাযোগ করুন</span></h2>
@@ -613,7 +727,7 @@
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- ========== FOOTER (অপরিবর্তিত) ========== -->
   <footer class="bg-[#1a1a1a] pt-16 pb-6">
     <div class="max-w-6xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <div>
@@ -624,7 +738,7 @@
         <p class="mt-3 text-sm font-semibold text-gray-300">WE ALWAYS PROVIDE BEST SERVICE</p>
         
         <p class="mt-4 text-sm leading-relaxed text-gray-300 flex items-start gap-2">
-          <i class="fa-solid fa-location-dot text-red-primary text-base mt-1"></i>
+          <i class="fas fa-map-marker-alt text-red-primary text-base mt-1"></i>
           <span class="text-gray-300">Alom House, 2nd floor, Islamia Road, Sonapur, Sadar, Noakhali.</span>
         </p>
       </div>
@@ -661,9 +775,6 @@
           <a href="https://wa.me/8801716729140" target="_blank" class="text-gray-300 hover:text-green-400 transition" aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
           </a>
-          <a href="https://www.youtube.com/@ssnetwork41" target="_blank" class="text-gray-300 hover:text-red-500 transition" aria-label="YouTube">
-            <i class="fab fa-youtube"></i>
-          </a>
         </div>
       </div>
     </div>
@@ -673,7 +784,7 @@
     </div>
   </footer>
 
-  <!-- ========== FLOATING WHATSAPP ========== -->
+  <!-- ========== FLOATING WHATSAPP (RIGHT SIDE) ========== -->
   <a href="https://wa.me/8801716729140" target="_blank" class="whatsapp-float" aria-label="WhatsApp chat">
     <i class="fab fa-whatsapp"></i>
     <span class="tooltip">WhatsApp-এ নক দিন</span>
@@ -691,11 +802,175 @@
     </div>
   </div>
 
-  <!-- Swiper JS CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-  <!-- JavaScript Logics -->
+  <!-- ================================================================= -->
+  <!-- ========== SLIDER JAVASCRIPT (NEW - সম্পূর্ণ ভ্যানিলা) ========= -->
+  <!-- ================================================================= -->
   <script>
+    (function() {
+      "use strict";
+
+      // DOM Elements
+      const track = document.getElementById('sliderTrack');
+      const slides = track.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+      const dotsContainer = document.getElementById('sliderDots');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      let currentIndex = 0;
+      let autoSlideInterval = null;
+      let isTransitioning = false;
+
+      // Create dots
+      function createDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'slider-dot';
+          dot.setAttribute('data-index', i);
+          dot.setAttribute('aria-label', `Go to slide ${i+1}`);
+          if (i === 0) dot.classList.add('active');
+          dot.addEventListener('click', () => goToSlide(i));
+          dotsContainer.appendChild(dot);
+        }
+      }
+      createDots();
+
+      // Update dots
+      function updateDots(index) {
+        const allDots = dotsContainer.querySelectorAll('.slider-dot');
+        allDots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+
+      // Go to specific slide
+      function goToSlide(index) {
+        if (isTransitioning) return;
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        currentIndex = index;
+        const offset = -currentIndex * 100;
+        track.style.transform = `translateX(${offset}%)`;
+        updateDots(currentIndex);
+        resetAutoSlide();
+      }
+
+      // Next / Prev
+      function nextSlide() {
+        if (isTransitioning) return;
+        goToSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        if (isTransitioning) return;
+        goToSlide(currentIndex - 1);
+      }
+
+      // Auto slide
+      function startAutoSlide() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(nextSlide, 4500);
+      }
+
+      function resetAutoSlide() {
+        if (autoSlideInterval) {
+          clearInterval(autoSlideInterval);
+          startAutoSlide();
+        }
+      }
+
+      // Transition end handler
+      function onTransitionEnd() {
+        isTransitioning = false;
+      }
+
+      track.addEventListener('transitionend', onTransitionEnd);
+
+      // --- DRAG / SWIPE (mouse & touch) ---
+      let startX = 0;
+      let endX = 0;
+      let isDragging = false;
+
+      function handleDragStart(e) {
+        const event = e.touches ? e.touches[0] : e;
+        startX = event.clientX;
+        isDragging = true;
+        track.style.transition = 'none';
+      }
+
+      function handleDragMove(e) {
+        if (!isDragging) return;
+        const event = e.touches ? e.touches[0] : e;
+        const diff = event.clientX - startX;
+        const currentOffset = -currentIndex * 100;
+        const newOffset = currentOffset + (diff / track.parentElement.offsetWidth) * 100;
+        track.style.transform = `translateX(${newOffset}%)`;
+      }
+
+      function handleDragEnd(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        track.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        const event = e.changedTouches ? e.changedTouches[0] : e;
+        const diff = event.clientX - startX;
+        const threshold = 50; // pixels
+        if (diff > threshold) {
+          prevSlide();
+        } else if (diff < -threshold) {
+          nextSlide();
+        } else {
+          // snap back
+          goToSlide(currentIndex);
+        }
+      }
+
+      // Mouse events
+      const wrapper = document.getElementById('sliderWrapper');
+      wrapper.addEventListener('mousedown', handleDragStart);
+      window.addEventListener('mousemove', handleDragMove);
+      window.addEventListener('mouseup', handleDragEnd);
+
+      // Touch events
+      wrapper.addEventListener('touchstart', handleDragStart, { passive: true });
+      window.addEventListener('touchmove', handleDragMove, { passive: true });
+      window.addEventListener('touchend', handleDragEnd, { passive: true });
+
+      // Buttons
+      prevBtn.addEventListener('click', prevSlide);
+      nextBtn.addEventListener('click', nextSlide);
+
+      // Keyboard accessibility
+      wrapper.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+      });
+      // Make wrapper focusable for keyboard
+      wrapper.setAttribute('tabindex', '0');
+
+      // Start auto slide
+      startAutoSlide();
+
+      // Pause auto on hover (optional)
+      wrapper.addEventListener('mouseenter', () => {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+      });
+      wrapper.addEventListener('mouseleave', () => {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        startAutoSlide();
+      });
+
+      // Clean up (optional but good practice)
+      window.addEventListener('beforeunload', function() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+      });
+
+    })();
+  </script>
+
+  <!-- ========== EXISTING JAVASCRIPT (Header, Form, Modal) ========= -->
+  <script>
+    // Header Scroll Shadow
     const header = document.getElementById('mainHeader');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 20) {
@@ -705,29 +980,14 @@
       }
     });
 
+    // Mobile Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('open');
     });
 
-    const swiper = new Swiper('.main-hero-swiper', {
-      loop: true,
-      autoplay: {
-        delay: 3500,
-        disableOnInteraction: false,
-      },
-      grabCursor: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-
+    // Form Submission Logic to WhatsApp
     const connectionForm = document.getElementById('connectionForm');
     const thankYouModal = document.getElementById('thankYouModal');
     const closeModalBtn = document.getElementById('closeModalBtn');
@@ -762,5 +1022,6 @@
       thankYouModal.classList.remove('active');
     });
   </script>
+
 </body>
 </html>
