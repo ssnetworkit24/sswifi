@@ -80,7 +80,7 @@
     footer .text-red-primary {
       color: #E31E24 !important;
     }
-    footer .fa-map-marker-alt {
+    footer .fa-location-dot {
       color: #E31E24 !important;
     }
 
@@ -434,13 +434,12 @@
   </header>
 
   <!-- ============================================================ -->
-  <!-- ========== SLIDER SECTION (হেডার ও হিরোর মাঝে) ========= -->
+  <!-- ========== SLIDER SECTION ========= -->
   <!-- ============================================================ -->
   <section class="slider-container pt-28 md:pt-36 pb-4">
     <div class="slider-wrapper" id="sliderWrapper">
       <div class="slider-track" id="sliderTrack">
         
-        <!-- ===== আপনার GitHub ইমেজ এখানে বসান ===== -->
         <!-- Slide 1 -->
         <div class="slide">
           <img src="slide1.jpg" alt="SS Network অফার ১" loading="lazy" />
@@ -461,7 +460,6 @@
         <div class="slide">
           <img src="slide5.jpg" alt="SS Network অফার ৫" loading="lazy" />
         </div>
-        <!-- ===== ইমেজ শেষ ===== -->
         
       </div>
 
@@ -723,7 +721,9 @@
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- ============================================================ -->
+  <!-- ========== ফুটার (আপডেটেড - ইউটিউব ও লোকেশন আইকন সহ) ========= -->
+  <!-- ============================================================ -->
   <footer class="bg-[#1a1a1a] pt-16 pb-6">
     <div class="max-w-6xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <div>
@@ -733,8 +733,9 @@
         </div>
         <p class="mt-3 text-sm font-semibold text-gray-300">WE ALWAYS PROVIDE BEST SERVICE</p>
         
+        <!-- লোকেশন - নতুন fa-location-dot আইকন -->
         <p class="mt-4 text-sm leading-relaxed text-gray-300 flex items-start gap-2">
-          <i class="fas fa-map-marker-alt text-red-primary text-base mt-1"></i>
+          <i class="fas fa-location-dot text-red-primary text-base mt-1"></i>
           <span class="text-gray-300">Alom House, 2nd floor, Islamia Road, Sonapur, Sadar, Noakhali.</span>
         </p>
       </div>
@@ -764,12 +765,16 @@
           </a>
         </p>
 
+        <!-- সোশ্যাল মিডিয়া আইকন (ফেসবুক, ওয়াটসাপ, ইউটিউব) -->
         <div class="flex gap-4 text-xl">
           <a href="https://www.facebook.com/share/14psW5MGT5i/" target="_blank" class="text-gray-300 hover:text-blue-500 transition" aria-label="Facebook">
             <i class="fab fa-facebook"></i>
           </a>
           <a href="https://wa.me/8801716729140" target="_blank" class="text-gray-300 hover:text-green-400 transition" aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.youtube.com/@ssnetwork41" target="_blank" class="text-gray-300 hover:text-red-600 transition" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
           </a>
         </div>
       </div>
@@ -816,7 +821,6 @@
       let autoSlideInterval = null;
       let isTransitioning = false;
 
-      // Create dots
       function createDots() {
         dotsContainer.innerHTML = '';
         for (let i = 0; i < totalSlides; i++) {
@@ -877,9 +881,7 @@
 
       track.addEventListener('transitionend', onTransitionEnd);
 
-      // --- DRAG / SWIPE ---
       let startX = 0;
-      let endX = 0;
       let isDragging = false;
 
       function handleDragStart(e) {
@@ -949,7 +951,7 @@
     })();
   </script>
 
-  <!-- ========== MAIN JAVASCRIPT (Header, Form, Modal) ========= -->
+  <!-- ========== MAIN JAVASCRIPT ========= -->
   <script>
     // Header Scroll Shadow
     const header = document.getElementById('mainHeader');
